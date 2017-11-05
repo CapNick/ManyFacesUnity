@@ -12,58 +12,56 @@ using Emgu.CV.Structure;
 using Emgu.CV.VideoSurveillance;
 using UnityEditor;
 
-public class CameraFeed : MonoBehaviour {
-
-	private Capture cap;
+public class CameraFeed : MonoBehaviour
+{
+	private VideoCapture _capture;
 	private CascadeClassifier _cascadeClassifier;
 
-	
-	void Start() 
+	void Start()
 	{
-		cap = new Capture();
-				
-		_cascadeClassifier = new CascadeClassifier("Assets/Resources/haarcascade_frontalface_default.xml");									
-
-		
+		try
+		{
+			_capture = new VideoCapture();
+		}
+		catch (Exception e)
+		{
+			Debug.LogError(e);
+		}
 	}
 
-	public void Update() {
-		GetImage();
+	public void Update()
+	{
+		if (_capture != null)
+		{
+			GetImage();
+		}
 	}
-	
+
 
 	private void GetImage()
 	{
-		using (Image<Bgr, byte> nextFrame = cap.QueryFrame())
-		{
-			if (nextFrame != null)
-			{
-				// there's only one channel (greyscale), hence the zero index
-				//var faces = nextFrame.DetectHaarCascade(haar)[0];
-				Image<Gray, byte> grayFrame = nextFrame.Convert<Gray, byte>();
-				Size imageSize = new Size();
-				var faces = _cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 4, imageSize, Size.Empty);
+		Mat frame = _capture.QueryFrame();
+		Mat smoothedFrame = new Mat();
+//        CvInvoke.GaussianBlur(frame, smoothedFrame, new Size(3, 3), 1);
 
-				
-				
-				foreach (var face in faces)
-				{
-					nextFrame.Draw(face, new Bgr(0,double.MaxValue,0), 3);
-				}
-				MemoryStream mem = new MemoryStream();
-				nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);
-				
-				Texture2D camera = new Texture2D(1920, 1080);
-				camera.LoadImage(mem.ToArray());
-				
-				GetComponent<Renderer>().material.mainTexture = camera;
-			}
-		}
+		Image<Bgr, byte> nextFrame = _capture.QueryFrame().ToImage<Bgr, byte>();
+
+		MemoryStream mem = new MemoryStream();
+
+		nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);
+		Texture2D cameraFeed = new Texture2D(1920, 1080);
+		cameraFeed.LoadImage(mem.ToArray());
+
+		GetComponent<Renderer>().material.mainTexture = cameraFeed;
+
 	}
-	void OnApplicationQuit() {
-	//releasing the camera after use
-		if (cap != null) {
-			cap.Dispose();
+
+	void OnApplicationQuit()
+	{
+		//releasing the camera after use
+		if (_capture != null)
+		{
+			_capture.Dispose();
 		}
 	}
 }
