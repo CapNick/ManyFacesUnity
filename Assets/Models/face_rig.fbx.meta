@@ -1,0 +1,235 @@
+fileFormatVersion: 2
+guid: 00cf678d455f01447afa63408a4883cc
+timeCreated: 1507887138
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Bone_001_In_L
+    100006: Bone_001_In_R
+    100008: Bone_001_L
+    100010: Bone_001_Out_L
+    100012: Bone_001_Out_R
+    100014: Bone_001_R
+    100016: Bone_002_In_L
+    100018: Bone_002_In_R
+    100020: Bone_002_L
+    100022: Bone_002_Out_L
+    100024: Bone_002_Out_R
+    100026: Bone_002_R
+    100028: Bone_004_In_L
+    100030: Bone_004_In_R
+    100032: Bone_004_L
+    100034: Bone_004_Out_L
+    100036: Bone_004_Out_R
+    100038: Bone_004_R
+    100040: Bone_006
+    100042: Bone_007_L
+    100044: Bone_007_R
+    100046: Bone_008_In_L
+    100048: Bone_008_In_R
+    100050: Bone_008_L
+    100052: Bone_008_Out_L
+    100054: Bone_008_Out_R
+    100056: Bone_008_R
+    100058: Bone_009_In_L
+    100060: Bone_009_In_R
+    100062: Bone_009_L
+    100064: Bone_009_Out_L
+    100066: Bone_009_Out_R
+    100068: Bone_009_R
+    100070: Bone_010_In_L
+    100072: Bone_010_In_R
+    100074: Bone_010_Out_L
+    100076: Bone_010_Out_R
+    100078: Bone_013_L
+    100080: Bone_013_R
+    100082: Bone_014_L
+    100084: Bone_014_L_In
+    100086: Bone_014_L_Out
+    100088: Bone_014_R
+    100090: Bone_014_R_In
+    100092: Bone_014_R_Out
+    100094: Bone_015_L
+    100096: Bone_015_R
+    100098: Bone_016_In_L
+    100100: Bone_016_In_R
+    100102: Bone_016_Out_L
+    100104: Bone_016_Out_R
+    100106: Bone_020_L
+    100108: Bone_020_R
+    100110: Bone_Out
+    100112: eye_L
+    100114: eye_R
+    100116: //RootNode
+    100118: head_C
+    100120: LeftCheek
+    100122: LeftEar
+    100124: Pasha_guard_head
+    100126: Pasha_guard_head_MeshPart0
+    100128: Pasha_guard_head_MeshPart1
+    100130: Pasha_guard_head_MeshPart2
+    100132: RightCheek
+    100134: RightEar
+    400000: Armature
+    400002: Bone
+    400004: Bone_001_In_L
+    400006: Bone_001_In_R
+    400008: Bone_001_L
+    400010: Bone_001_Out_L
+    400012: Bone_001_Out_R
+    400014: Bone_001_R
+    400016: Bone_002_In_L
+    400018: Bone_002_In_R
+    400020: Bone_002_L
+    400022: Bone_002_Out_L
+    400024: Bone_002_Out_R
+    400026: Bone_002_R
+    400028: Bone_004_In_L
+    400030: Bone_004_In_R
+    400032: Bone_004_L
+    400034: Bone_004_Out_L
+    400036: Bone_004_Out_R
+    400038: Bone_004_R
+    400040: Bone_006
+    400042: Bone_007_L
+    400044: Bone_007_R
+    400046: Bone_008_In_L
+    400048: Bone_008_In_R
+    400050: Bone_008_L
+    400052: Bone_008_Out_L
+    400054: Bone_008_Out_R
+    400056: Bone_008_R
+    400058: Bone_009_In_L
+    400060: Bone_009_In_R
+    400062: Bone_009_L
+    400064: Bone_009_Out_L
+    400066: Bone_009_Out_R
+    400068: Bone_009_R
+    400070: Bone_010_In_L
+    400072: Bone_010_In_R
+    400074: Bone_010_Out_L
+    400076: Bone_010_Out_R
+    400078: Bone_013_L
+    400080: Bone_013_R
+    400082: Bone_014_L
+    400084: Bone_014_L_In
+    400086: Bone_014_L_Out
+    400088: Bone_014_R
+    400090: Bone_014_R_In
+    400092: Bone_014_R_Out
+    400094: Bone_015_L
+    400096: Bone_015_R
+    400098: Bone_016_In_L
+    400100: Bone_016_In_R
+    400102: Bone_016_Out_L
+    400104: Bone_016_Out_R
+    400106: Bone_020_L
+    400108: Bone_020_R
+    400110: Bone_Out
+    400112: eye_L
+    400114: eye_R
+    400116: //RootNode
+    400118: head_C
+    400120: LeftCheek
+    400122: LeftEar
+    400124: Pasha_guard_head
+    400126: Pasha_guard_head_MeshPart0
+    400128: Pasha_guard_head_MeshPart1
+    400130: Pasha_guard_head_MeshPart2
+    400132: RightCheek
+    400134: RightEar
+    4300000: Pasha_guard_head_MeshPart0
+    4300002: Pasha_guard_head_MeshPart1
+    4300004: Pasha_guard_head_MeshPart2
+    7400000: Default Take
+    7400002: Basic
+    7400004: LeftBink
+    7400006: RightWink
+    7400008: Shock
+    7400010: Smile
+    7400012: Sqint
+    9500000: //RootNode
+    13700000: Pasha_guard_head_MeshPart0
+    13700002: Pasha_guard_head_MeshPart1
+    13700004: Pasha_guard_head_MeshPart2
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
