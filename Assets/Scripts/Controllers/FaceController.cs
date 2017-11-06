@@ -9,6 +9,9 @@ public class FaceController : MonoBehaviour {
 	[SerializeField]
 	private Transform _lookingTarget;
 
+	private float _maxEyeDepression;
+	private float _maxEyeElevation;
+
 	[SerializeField] private Transform _leftEye;
 	[SerializeField] private Transform _rightEye;
 
