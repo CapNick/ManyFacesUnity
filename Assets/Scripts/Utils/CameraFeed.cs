@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 using UnityEngine;
 
 //emgu.cv imports
 using Emgu.CV;
-using Emgu.CV.Cvb;
-using Emgu.CV.UI;
-using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
-using Emgu.CV.VideoSurveillance;
-using UnityEditor;
+
 
 public class CameraFeed : MonoBehaviour
 {
@@ -40,8 +35,8 @@ public class CameraFeed : MonoBehaviour
 
 	private void GetImage()
 	{
-		Mat frame = _capture.QueryFrame();
-		Mat smoothedFrame = new Mat();
+//		Mat frame = _capture.QueryFrame();
+//		Mat smoothedFrame = new Mat();
 //        CvInvoke.GaussianBlur(frame, smoothedFrame, new Size(3, 3), 1);
 
 		Image<Bgr, byte> nextFrame = _capture.QueryFrame().ToImage<Bgr, byte>();
