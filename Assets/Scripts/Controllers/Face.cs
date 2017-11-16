@@ -24,6 +24,8 @@ namespace Controllers {
 		[SerializeField] private Transform _rightEyePupil;
 
 		void Update()  {
+			transform.LookAt(_lookingTarget.position);
+			
 			_leftEye.LookAt(_lookingTarget.position);
 			_rightEye.LookAt(_lookingTarget.position);
 		}
