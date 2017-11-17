@@ -15,8 +15,6 @@ namespace Controllers {
 
 		private float _eyeDilationVlaue;
 		private float _eyeUnDilationVlaue;
-		
-		
 
 		[SerializeField] private Transform _leftEye;
 		[SerializeField] private Transform _rightEye;
