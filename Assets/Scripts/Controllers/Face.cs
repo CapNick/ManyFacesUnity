@@ -2,8 +2,11 @@
 using UnityEngine;
 
 namespace Controllers {
-	public class Face : MonoBehaviour {
-	
+	public class Face : MonoBehaviour
+	{
+
+		public Transform ViewingLocation;
+		
 		private List<Emotion> _animations = new List<Emotion>();
 
 		//looking variables

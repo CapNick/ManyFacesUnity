@@ -33,7 +33,7 @@ namespace Controllers
 				{
 					if (hit.transform.CompareTag("Head"))
 					{
-//						_viewingPosition = hit.transform.GetChild("CameraPosition").transform;
+						_viewingPosition = hit.transform.GetChild(1).GetComponent<Face>().ViewingLocation;
 						Debug.Log(hit.transform.childCount);
 						_selectedHead = hit.transform.gameObject;
 						_userInterface.gameObject.SetActive(true);
