@@ -10,13 +10,15 @@ using Emgu.CV.Structure;
 using System.Collections.Generic;
 
 
-namespace Utils
+namespace Controllers
 {
-	public class CameraFeed : MonoBehaviour
+	public class CameraFeed
 	{
+		public bool foundFace = false;
 		private VideoCapture _capture;
 		private CascadeClassifier _cascadeClassifier;
-		int _time = 0;
+		public float faceX;
+		public float faceY;
 
 		void Start()
 		{
@@ -45,11 +47,6 @@ namespace Utils
 		//Puts image on UI
 		private void GetImage()
 		{
-			//		Mat frame = _capture.QueryFrame();
-			//		Mat smoothedFrame = new Mat();
-			//        CvInvoke.GaussianBlur(frame, smoothedFrame, new Size(3, 3), 1);
-
-			//Image<Bgr, byte> nextFrame = _capture.QueryFrame().ToImage<Bgr, byte>();
 			IImage nextFrame = DetectPerson();
 			MemoryStream mem = new MemoryStream();
 			nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);
@@ -87,14 +84,24 @@ namespace Utils
 				out detectionTime);
 
 			//
-			if (faces.Capacity > 0)
-			{
-				Debug.Log("Found " + faces.Capacity + "faces. Tried to draw a square");
-				foreach (Rectangle face in faces)
-					CvInvoke.Rectangle(image, face, new Rgba(1, 0, 0, 1).MCvScalar, 2);
+			if (faces.Capacity > 0) {
+				foundFace = true;
+				Debug.Log ("Found " + faces.Capacity / 4 + "faces. Tried to draw a square");
+				foreach (Rectangle face in faces) {
+					CvInvoke.Rectangle (image, face, new Rgba (1, 0, 0, 1).MCvScalar, 2);
+					faceX = face.X;
+					faceY = face.Y;
+				}
+			} else {
+				foundFace = false;
 			}
 			return image;
 
+		}
+
+		public bool FaceDetected()
+		{
+			return foundFace;
 		}
 	}
 }

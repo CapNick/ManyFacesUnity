@@ -8,7 +8,7 @@ using Emgu.CV.Structure;
 using Emgu.CV.Cuda;
 #endif
 
-namespace Utils
+namespace Controllers
 {
 	public class DetectFaceCV
 	{

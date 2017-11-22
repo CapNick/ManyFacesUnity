@@ -24,7 +24,23 @@ namespace Controllers {
 		[SerializeField] private Transform _leftEyePupil;
 		[SerializeField] private Transform _rightEyePupil;
 
+		CameraFeed cameraFeed = new CameraFeed();
+
+		public void s
+
 		void Update()  {
+			//updates target to be cursor position for testing
+			//Vector3 mousepos = Input.mousePosition;
+			//mousepos.z = 500.0f;
+			//mousepos.y = mousepos.y - 500.0f;
+			//mousepos.x = mousepos.x - 500.0f;
+			//_lookingTarget.position = mousepos;
+			cameraFeed.Update();
+			Vector3 facepos = new Vector3();
+			facepos.z = 500.0f;
+			facepos.y = cameraFeed.faceX - 500.0f;
+			facepos.x =  cameraFeed.faceY - 500.0f;
+			_lookingTarget.position = facepos;
 			transform.LookAt(_lookingTarget.position);
 			
 			_leftEye.LookAt(_lookingTarget.position);
