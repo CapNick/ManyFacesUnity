@@ -12,13 +12,13 @@ using System.Collections.Generic;
 
 namespace Controllers
 {
-	public class CameraFeed
+	public class CameraFeed : MonoBehaviour
 	{
-		public bool foundFace = false;
+		public static bool foundFace = false;
 		private VideoCapture _capture;
 		private CascadeClassifier _cascadeClassifier;
-		public float faceX;
-		public float faceY;
+		public static float faceX;
+		public static float faceY;
 
 		void Start()
 		{
@@ -35,7 +35,7 @@ namespace Controllers
 			}
 		}
 
-		public void Update()
+		void Update()
 		{
 			if (_capture != null)
 			{
@@ -50,7 +50,8 @@ namespace Controllers
 			IImage nextFrame = DetectPerson();
 			MemoryStream mem = new MemoryStream();
 			nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);
-			Texture2D cameraFeed = new Texture2D(1920, 1080);
+			//change this when necessary
+			Texture2D cameraFeed = new Texture2D(1280, 720);
 			cameraFeed.LoadImage(mem.ToArray());
 
 			GetComponent<Renderer>().material.mainTexture = cameraFeed;
@@ -86,7 +87,6 @@ namespace Controllers
 			//
 			if (faces.Capacity > 0) {
 				foundFace = true;
-				Debug.Log ("Found " + faces.Capacity / 4 + "faces. Tried to draw a square");
 				foreach (Rectangle face in faces) {
 					CvInvoke.Rectangle (image, face, new Rgba (1, 0, 0, 1).MCvScalar, 2);
 					faceX = face.X;
@@ -99,7 +99,7 @@ namespace Controllers
 
 		}
 
-		public bool FaceDetected()
+		public static bool FaceDetected()
 		{
 			return foundFace;
 		}
