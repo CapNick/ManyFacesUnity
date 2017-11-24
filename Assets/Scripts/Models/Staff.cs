@@ -1,12 +1,17 @@
-﻿namespace Models {
+﻿using System;
+
+namespace Models {
+    [Serializable]
     public class Staff
     {
-        public string first_name;
-        public string last_name;
-        public string contact;
-        public string title;
+        public string name;
+        public string room;
+        public string modules;
         public string email;
-//        public string image;
+        public string photo;
+        public string phone;
+        public string position;
+        public string _type;
         
     }
 }
