@@ -5,19 +5,25 @@ using UnityEngine;
 namespace Controllers { 
     public class StaffUIController : MonoBehaviour {
 
-        public Models.StaffData staffData { set; private get; }
+        public Models.StaffData StaffData { set; private get; }
 
-        public GameObject staffMemberPrefab;
+        public GameObject StaffMemberPrefab;
 
-        public GameObject staffList;
+        public GameObject StaffList;
 
-        List<GameObject> staffUIElements = new List<GameObject>();
+        List<GameObject> _staffUiElements = new List<GameObject>();
 
 	    // Use this for initialization
 	    void Start () {
-		    if(staffData != null) {
-
-            }
+		    if(StaffData != null) {
+				// if staff data is populated instantiate the staff member prefab
+			    foreach (Models.Staff staff in StaffData.Members) {
+				    GameObject staffMember = Instantiate(StaffMemberPrefab);
+				    staffMember.transform.SetParent(StaffList.transform, false);
+				    staffMember.GetComponent<UI.Staff>().AssignedStaff = staff;
+				    _staffUiElements.Add(staffMember);
+			    } 
+		    }
 	    }
 	
 	    // Update is called once per frame

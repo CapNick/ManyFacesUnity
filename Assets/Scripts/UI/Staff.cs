@@ -5,42 +5,45 @@ namespace UI {
     class Staff : MonoBehaviour {
         public Models.Staff AssignedStaff;
         [SerializeField]
-        public Text _name;
+        public Text Name;
         [SerializeField]
-        public Text _room;
+        public Text Room;
         [SerializeField]
-        public Text _modules;
+        public Text Modules;
         [SerializeField]
-        public Text _email;
+        public Text Email;
         [SerializeField]
-        public Text _phone;
+        public Text Phone;
         [SerializeField]
-        public Text _position;
+        public Text Position;
         [SerializeField]
-        public Text _type;
+        public Text Type;
 
         public void Update () {
             //checks for member of staff
             if (AssignedStaff != null) {
                 //if member of staff is found the text elements are updated
                 //check if each field has a value so we dont put in incorrect data into the field
-                if (_name) {
-                    _name.text = AssignedStaff.name;
+                if (Name) {
+                    Name.text = "Name: " + AssignedStaff.name;
                 }
-                if (_room) {
-                    _room.text = AssignedStaff.room;
+                if (Room) {
+                    Room.text = "Room: " + AssignedStaff.room;
                 }
-                if (_modules) {
-                    _modules.text = AssignedStaff.modules;
+                if (Modules) {
+                    Modules.text = "Modules Taught: " +AssignedStaff.modules;
                 }
-                if (_email) {
-                    _email.text = AssignedStaff.email;
+                if (Email) {
+                    Email.text = "Email Address: " +AssignedStaff.email;
                 }
-                if (_phone) {
-                    _phone.text = AssignedStaff.phone;
+                if (Phone) {
+                    Phone.text = "Phone Number: " +AssignedStaff.phone;
+                }                
+                if (Position) {
+                    Position.text = "Position: " +AssignedStaff.position;
                 }
-                if (_type) {
-                    _type.text = AssignedStaff._type;
+                if (Type) {
+                    Type.text = "Department: " +AssignedStaff._type;
                 }
 
             }

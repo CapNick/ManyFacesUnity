@@ -22,7 +22,7 @@ namespace Controllers {
             Debug.Log(staffData.LoadAllData());
             //once we have the data we set the reference to the staff data to the ui controller
             //so that the data can be used
-            staffUIController.staffData = staffData;
+            staffUIController.StaffData = staffData;
         }
 
         public void Update () {
