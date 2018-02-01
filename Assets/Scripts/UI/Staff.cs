@@ -27,7 +27,6 @@ namespace UI {
                 if (_name) {
                     _name.text = AssignedStaff.name;
                 }
-                //room is not complete ?
                 if (_room) {
                     _room.text = AssignedStaff.room;
                 }
