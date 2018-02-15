@@ -31,19 +31,19 @@ namespace UI {
                     Room.text = "Room: " + AssignedStaff.room;
                 }
                 if (Modules) {
-                    Modules.text = "Modules Taught: " +AssignedStaff.modules;
+                    Modules.text = "Modules Taught: " + AssignedStaff.modules;
                 }
                 if (Email) {
-                    Email.text = "Email Address: " +AssignedStaff.email;
+                    Email.text = "Email Address: " + AssignedStaff.email;
                 }
                 if (Phone) {
-                    Phone.text = "Phone Number: " +AssignedStaff.phone;
+                    Phone.text = "Phone Number: " + AssignedStaff.phone;
                 }                
                 if (Position) {
-                    Position.text = "Position: " +AssignedStaff.position;
+                    Position.text = "Position: " + AssignedStaff.position;
                 }
                 if (Type) {
-                    Type.text = "Department: " +AssignedStaff._type;
+                    Type.text = "Department: " + AssignedStaff._type;
                 }
 
             }
