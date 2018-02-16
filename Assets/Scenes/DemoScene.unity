@@ -1052,6 +1052,7 @@ GameObject:
   - component: {fileID: 1031504917}
   - component: {fileID: 1031504916}
   - component: {fileID: 1031504915}
+  - component: {fileID: 1031504919}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1121,6 +1122,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 179.99998, z: 0}
+--- !u!114 &1031504919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1031504914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 195f8879f4384a2e95a36ca169c185cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staffUIController: {fileID: 0}
 --- !u!1001 &1113664997
 Prefab:
   m_ObjectHideFlags: 0
@@ -1193,12 +1206,12 @@ Prefab:
     - target: {fileID: 224844997175614484, guid: b6122d85e7764a940a48c85e79b40d23,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -135.21
       objectReference: {fileID: 0}
     - target: {fileID: 224844997175614484, guid: b6122d85e7764a940a48c85e79b40d23,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 224844997175614484, guid: b6122d85e7764a940a48c85e79b40d23,
         type: 2}
@@ -1318,37 +1331,72 @@ Prefab:
     - target: {fileID: 224515390669552782, guid: b6122d85e7764a940a48c85e79b40d23,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -527
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 224154295233427302, guid: b6122d85e7764a940a48c85e79b40d23,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 150
+      value: 123.57143
       objectReference: {fileID: 0}
     - target: {fileID: 224990427192873400, guid: b6122d85e7764a940a48c85e79b40d23,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -15
+      value: 67.14285
       objectReference: {fileID: 0}
     - target: {fileID: 224403935284732044, guid: b6122d85e7764a940a48c85e79b40d23,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -115
+      value: -158.57147
       objectReference: {fileID: 0}
     - target: {fileID: 224951772988893272, guid: b6122d85e7764a940a48c85e79b40d23,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -90
+      value: -45.714294
       objectReference: {fileID: 0}
     - target: {fileID: 224217975903913548, guid: b6122d85e7764a940a48c85e79b40d23,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -105
+      value: -102.14288
       objectReference: {fileID: 0}
     - target: {fileID: 224388743887222578, guid: b6122d85e7764a940a48c85e79b40d23,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -65
+      value: 10.714279
+      objectReference: {fileID: 0}
+    - target: {fileID: 114819608277426388, guid: b6122d85e7764a940a48c85e79b40d23,
+        type: 2}
+      propertyPath: AssignedStaff.name
+      value: David Brailsford
+      objectReference: {fileID: 0}
+    - target: {fileID: 114819608277426388, guid: b6122d85e7764a940a48c85e79b40d23,
+        type: 2}
+      propertyPath: AssignedStaff._type
+      value: Academic
+      objectReference: {fileID: 0}
+    - target: {fileID: 114819608277426388, guid: b6122d85e7764a940a48c85e79b40d23,
+        type: 2}
+      propertyPath: AssignedStaff.position
+      value: John Dunford Emeritus Professor
+      objectReference: {fileID: 0}
+    - target: {fileID: 114819608277426388, guid: b6122d85e7764a940a48c85e79b40d23,
+        type: 2}
+      propertyPath: AssignedStaff.modules
+      value: None
+      objectReference: {fileID: 0}
+    - target: {fileID: 114819608277426388, guid: b6122d85e7764a940a48c85e79b40d23,
+        type: 2}
+      propertyPath: AssignedStaff.room
+      value: Room C10b Computer Science
+      objectReference: {fileID: 0}
+    - target: {fileID: 114819608277426388, guid: b6122d85e7764a940a48c85e79b40d23,
+        type: 2}
+      propertyPath: AssignedStaff.email
+      value: david.brailsford@nottingham.ac.uk
+      objectReference: {fileID: 0}
+    - target: {fileID: 114819608277426388, guid: b6122d85e7764a940a48c85e79b40d23,
+        type: 2}
+      propertyPath: AssignedStaff.phone
+      value: 01159514205
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6122d85e7764a940a48c85e79b40d23, type: 2}
