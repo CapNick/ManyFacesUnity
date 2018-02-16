@@ -17,6 +17,7 @@ namespace Utils {
         private CascadeClassifier _cascadeClassifier;
         public static float faceX;
         public static float faceY;
+        public GameObject pane;
 
         void Start () {
             Debug.Log("CameraFeed Initialisation starting.");
@@ -40,13 +41,13 @@ namespace Utils {
         //Puts image on UI
         private void GetImage () {
             IImage nextFrame = DetectPerson();
-//            MemoryStream mem = new MemoryStream();
-//            nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);
-//            //change this when necessary
-//            Texture2D cameraFeed = new Texture2D(1280, 720);
-//            cameraFeed.LoadImage(mem.ToArray());
+            MemoryStream mem = new MemoryStream();
+            nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);
+            //change this when necessary
+            Texture2D cameraFeed = new Texture2D(1280, 720);
+            cameraFeed.LoadImage(mem.ToArray());
 
-            //GetComponent<Renderer>().material.mainTexture = cameraFeed;
+            pane.GetComponent<Renderer>().material.mainTexture = cameraFeed;
 
         }
 

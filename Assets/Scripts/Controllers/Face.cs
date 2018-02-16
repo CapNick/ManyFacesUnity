@@ -39,8 +39,8 @@ namespace Controllers {
 		    facepos.z = 30.0f;
 		    if (Utils.CameraFeed.FaceDetected()) {
 		        facepos.z = 20.0f;
-		        facepos.x = CameraFeed.faceX / 80;
-		        facepos.y = (-CameraFeed.faceY / 80) + 10;
+		        facepos.x = CameraFeed.faceX / 40;
+		        facepos.y = (-CameraFeed.faceY / 100);
 		        Debug.Log("Detected face at " + facepos.x + ", " + facepos.y);
 		    }
 		    else {
