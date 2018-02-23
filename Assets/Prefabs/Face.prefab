@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23974329843539228}
   m_Layer: 0
   m_Name: maxwilson_MeshPart0
-  m_TagString: Untagged
+  m_TagString: Face
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4668664175489412}
   m_Layer: 0
   m_Name: testing
-  m_TagString: Untagged
+  m_TagString: Face
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 23122912014606278}
   m_Layer: 0
   m_Name: maxwilson_MeshPart1
-  m_TagString: Untagged
+  m_TagString: Face
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1615573031074716}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -90,7 +90,7 @@ Transform:
   - {fileID: 4941888918670640}
   m_Father: {fileID: 4752437377332700}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 180}
 --- !u!4 &4752437377332700
 Transform:
   m_ObjectHideFlags: 1
@@ -233,4 +233,7 @@ MonoBehaviour:
     phone: 
     position: 
     _type: 
-  FaceMesh: {fileID: 0}
+  FaceRenderers:
+  - {fileID: 23974329843539228}
+  - {fileID: 23122912014606278}
+  Selected: 0

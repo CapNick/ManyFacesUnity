@@ -4,20 +4,32 @@ using UnityEngine;
 namespace Models {
 	public class Face2 : MonoBehaviour {
 
-
 		public Staff staff;
-		public Mesh FaceMesh;
+		public Renderer[] FaceRenderers;
 
 		public bool Selected = false;
+
+		private Color previousColor;
 			
 		// Use this for initialization
 		void Start () {
-		
+			previousColor = FaceRenderers[0].material.color;
 		}
 	
 		// Update is called once per frame
 		void Update () {
-			
+			if (Selected) {
+				foreach (var rend in FaceRenderers) {
+					rend.material.color = Color.red;
+
+				}
+			}
+			else {
+				foreach (var rend in FaceRenderers) {
+					rend.material.color = previousColor;
+
+				}
+			}
 		}
 
 //		//cursor hover over entered

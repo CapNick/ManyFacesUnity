@@ -18,15 +18,24 @@ namespace Controllers {
 		public float AreaWidth;
 		public float AreaHeight;
 
+		[Header("Screen info")]
+		private int _width;
+		private int _height;
+		private int _facesPerLine = 12;
+
 //		private LiveCameraFeed _cameraFeed;
 		
 		public void Awake() {
 //			 _cameraFeed = new LiveCameraFeed();
+			_width = Screen.width;
+			_height = Screen.height;
+
 		}
 
 		// Use this for initialization
 		void Start () {
 			LoadFaces();
+			Debug.Log("Total Faces " + _staffData.Members.Count);
 		}
 	
 		// Update is called once per frame
@@ -49,8 +58,11 @@ namespace Controllers {
 				_staffData = new StaffData(file);
 				_staffData.LoadAllData();
 			}
+
+			int counter = 0;
 			foreach (Staff staff in _staffData.Members) {
 				GameObject face = Instantiate(FacePrefab);
+				face.transform.SetParent(transform);
 				//set the staff list reference
 				face.GetComponent<Face2>().staff = staff;
 				//transform position

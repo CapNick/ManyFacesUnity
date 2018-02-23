@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using Models;
+using UnityEngine;
 
 namespace Controllers {
     public class HandSelectorController : MonoBehaviour {
         public Camera MainCamera;
 
-        public Transform previousSelected;
+        public GameObject previousSelected;
 
         private float holdCounter;
+        
+        public UI.Staff StaffPannel;
         
         public void Update() {
             Vector3 position = Input.mousePosition;
@@ -23,20 +26,31 @@ namespace Controllers {
                 Transform objectHit = hit.transform;
                 if (objectHit.CompareTag("Face")) {
 
-                    if (previousSelected.Equals(objectHit)) {
+                    if (previousSelected != null ) {
+                        
                         holdCounter++;
+                        if (holdCounter > 100) {
+                            objectHit.gameObject.GetComponent<Face2>().Selected = true;
+                            StaffPannel.AssignedStaff = objectHit.GetComponent<Face2>().staff;
+                        }
                     }
                     else {
-                        previousSelected = objectHit;
+                        previousSelected = objectHit.gameObject;
+                        objectHit.gameObject.GetComponent<Face2>().Selected = false;
                         holdCounter = 0;
+                        StaffPannel.AssignedStaff = null;
                     }
 
 //                    objectHit.GetComponent<Renderer>().material.color = Color.black;
                     
                 }
                 else {
-                    previousSelected = null;
-                    holdCounter = 0;
+                    if (previousSelected != null) {
+                        objectHit.gameObject.GetComponent<Face2>().Selected = false;
+//                        previousSelected = null;
+                        StaffPannel.AssignedStaff = null;
+                        holdCounter = 0;
+                    }
                 }
             }
 

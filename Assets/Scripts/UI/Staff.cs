@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 namespace UI {
-    class Staff : MonoBehaviour {
+    public class Staff : MonoBehaviour {
         public Models.Staff AssignedStaff;
         [SerializeField]
         public Text Name;
