@@ -38,7 +38,7 @@ namespace Utils {
         }
 
         //Detects if somebody is at the camera
-        private IImage DetectPerson () {
+        public IImage DetectPerson () {
             FaceLocations.Clear();
             //Get current frame
             Mat frame = _capture.QueryFrame();
