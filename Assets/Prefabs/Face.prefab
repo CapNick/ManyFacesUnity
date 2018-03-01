@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4752437377332700}
   - component: {fileID: 114025426364624958}
+  - component: {fileID: 65764349386563082}
   m_Layer: 0
   m_Name: Face
   m_TagString: Face
@@ -213,6 +214,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1097125770953734}
   m_Mesh: {fileID: 4300000, guid: 9ca28f96ce4e74c4586af8faa5102820, type: 3}
+--- !u!65 &65764349386563082
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301905838405760}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.25, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114025426364624958
 MonoBehaviour:
   m_ObjectHideFlags: 1
