@@ -9,11 +9,11 @@ namespace Models {
 
 		public bool Selected = false;
 
-		private Color previousColor;
+		private Color _previousColor;
 			
 		// Use this for initialization
 		void Start () {
-			previousColor = FaceRenderers[0].material.color;
+			_previousColor = FaceRenderers[0].material.color;
 		}
 	
 		// Update is called once per frame
@@ -21,13 +21,11 @@ namespace Models {
 			if (Selected) {
 				foreach (var rend in FaceRenderers) {
 					rend.material.color = Color.red;
-
 				}
 			}
 			else {
 				foreach (var rend in FaceRenderers) {
-					rend.material.color = previousColor;
-
+					rend.material.color = _previousColor;
 				}
 			}
 		}
