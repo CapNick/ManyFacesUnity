@@ -10,6 +10,9 @@ namespace Models {
 		public bool Selected = false;
 
 		private Color _previousColor;
+		private Vector3 _lookingPos;
+
+		public bool DEBUG;
 			
 		// Use this for initialization
 		void Start () {
@@ -18,6 +21,17 @@ namespace Models {
 	
 		// Update is called once per frame
 		void Update () {
+			if (DEBUG) {
+				UpdateHeadColor();
+			}
+		}
+
+		public void UpdateLookingPosition(Vector3 lookingPos) {
+			_lookingPos = lookingPos;
+			//set anything else needed
+		}
+
+		private void UpdateHeadColor() {
 			if (Selected) {
 				foreach (var rend in FaceRenderers) {
 					rend.material.color = Color.red;
@@ -30,18 +44,6 @@ namespace Models {
 			}
 		}
 
-//		//cursor hover over entered
-//		public void OnTriggerEnter(Collider col) {
-//			if (col.gameObject.CompareTag("Cursor")) {
-//				Selected = true;
-//			}
-//		}
-//
-//		//cursor hover over leave 
-//		private void OnTriggerExit(Collider col) {
-//			if (col.gameObject.CompareTag("Cursor")) {
-//				Selected = false;
-//			}
-//		}
+
 	}
 }

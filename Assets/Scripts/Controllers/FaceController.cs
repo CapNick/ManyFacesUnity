@@ -8,6 +8,7 @@ namespace Controllers {
 		[Header("Faces Objects")]
 		public GameObject FacePrefab;
 		public List<GameObject> Faces;
+		public bool DEBUG = false;
 		
 //		[Header("Data Loading")]
 		private string _uri = "https://dev.capnick.co.uk/faces.json";
@@ -21,9 +22,11 @@ namespace Controllers {
 		public float AreaHeight;
 
 		[Header("Screen info")] 
-		public int ScreenWidth;
-		public int ScreenHeight;
-		private int _facesPerLine = 12;
+		public float ScreenWidth;
+		public float ScreenHeight;
+		private int _facesPerLine = 10;
+		private int _facesLines = 4;
+		private int _maxFacesInScene = 36;
 
 		private LiveCameraFeed _cameraFeed;
 		
@@ -33,8 +36,8 @@ namespace Controllers {
 
 		// Use this for initialization
 		void Start () {
-			ScreenHeight = Screen.height;
-			ScreenWidth = Screen.width;
+			ScreenHeight = Camera.main.orthographicSize * 2.0f;
+			ScreenWidth = Camera.main.orthographicSize * 2.0f * Screen.width / Screen.height;
 			LoadFaces();
 			Debug.Log("Total Faces " + _staffData.Members.Count);
 		}
@@ -62,19 +65,21 @@ namespace Controllers {
 				_staffData.LoadAllData();
 			}
 			Debug.Log(_staffData.Members.Count/_facesPerLine);
-//			transform.position = 
-			int facesX = _facesPerLine;
-			int facesY = _staffData.Members.Count/_facesPerLine;
+			
+			
+			
+			
 			int faceCounter = 0;
-			for (int x = 0; x < facesX; x++) {
-				for (int y = 0; y < facesY; y++) {
+			for (int y = 0; y < _facesLines; y++) {
+				for (int x = 0; x < _facesPerLine; x++) {
 					GameObject face = Instantiate(FacePrefab);
 					Faces.Add(face);
 					face.name = "Face: " + x + "," + y + " ID: " + faceCounter;
 					//set the staff list reference
-					face.GetComponent<Face2>().staff = _staffData.Members[faceCounter];
-
-					face.transform.position = new Vector3(-facesX/2 +  x * FaceOffsetX, -facesY/2 + y * FaceOffsetY,0);
+					Face2 face2 = face.GetComponent<Face2>();
+					face2.staff = _staffData.Members[faceCounter];
+					face2.DEBUG = DEBUG;
+					face.transform.position = new Vector3(0, 0, 0);
 
 					face.transform.SetParent(transform);
 					faceCounter++;
