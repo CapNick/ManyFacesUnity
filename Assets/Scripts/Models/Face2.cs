@@ -13,10 +13,16 @@ namespace Models {
 		private Vector3 _lookingPos;
 
 		public bool DEBUG;
+
+
+		[Header("Faces Bounds")] 
+		public GameObject Painting;
+//		public Vector3 Bounds;
 			
 		// Use this for initialization
 		void Start () {
 			_previousColor = FaceRenderers[0].material.color;
+//			Bounds = Painting.GetComponent<Renderer>().bounds.size;
 		}
 	
 		// Update is called once per frame

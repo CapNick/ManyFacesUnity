@@ -86,12 +86,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4668664175489412}
   m_Layer: 0
-  m_Name: testing
+  m_Name: model
   m_TagString: Face
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1906982491792764
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,3 +382,4 @@ MonoBehaviour:
   - {fileID: 23122912014606278}
   Selected: 0
   DEBUG: 0
+  Painting: {fileID: 1022031881150288}

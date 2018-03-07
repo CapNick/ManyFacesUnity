@@ -16,10 +16,8 @@ namespace Controllers {
 		private StaffData _staffData;
 
 		[Header("Spawning Area")] 
-		public float FaceOffsetX;
-		public float FaceOffsetY;
-		public float AreaWidth;
-		public float AreaHeight;
+		private const float FaceWidth = 2.553752f;
+		private const float FaceHeight = 3.537174f;
 
 		[Header("Screen info")] 
 		public float ScreenWidth;
@@ -64,10 +62,11 @@ namespace Controllers {
 				_staffData = new StaffData(file);
 				_staffData.LoadAllData();
 			}
-			Debug.Log(_staffData.Members.Count/_facesPerLine);
 			
-			
-			
+			int horMult = (int)Mathf.Floor(ScreenHeight / FaceHeight);
+			int vertMult = (int)Mathf.Floor(ScreenWidth / FaceWidth);
+			Debug.Log(horMult);
+			Debug.Log(vertMult);
 			
 			int faceCounter = 0;
 			for (int y = 0; y < _facesLines; y++) {
@@ -79,7 +78,8 @@ namespace Controllers {
 					Face2 face2 = face.GetComponent<Face2>();
 					face2.staff = _staffData.Members[faceCounter];
 					face2.DEBUG = DEBUG;
-					face.transform.position = new Vector3(0, 0, 0);
+					face.transform.position = new Vector3((-ScreenWidth+FaceWidth)/2 + (FaceWidth + 0.553752f/2) * x + 0.553752f/3, 
+						(-ScreenHeight+FaceHeight)/2  + (FaceHeight + 0.537174f/2)* y + 0.537174f);
 
 					face.transform.SetParent(transform);
 					faceCounter++;
@@ -90,6 +90,15 @@ namespace Controllers {
 		public void OnApplicationQuit() {
 			_cameraFeed.ShutDownFeed();
 		}
-		
+
+		public void OnDrawGizmosSelected() {
+			Gizmos.color = new Color(0,255,0,0.2f);
+			for (int y = 0; y < _facesLines; y++) {
+				for (int x = 0; x < _facesPerLine; x++) {
+					Gizmos.DrawCube(new Vector3((-ScreenWidth+FaceWidth)/2 + (FaceWidth + 0.553752f/2) * x + 0.553752f/3, 
+						(-ScreenHeight+FaceHeight)/2  + (FaceHeight + 0.537174f/2)* y + 0.537174f), new Vector3(FaceWidth,FaceHeight,1f));
+				}
+			}
+		}
 	}
 }
