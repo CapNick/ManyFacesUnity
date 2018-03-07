@@ -8,9 +8,6 @@ using Newtonsoft.Json;
 namespace Controllers {
     public class StaffController : MonoBehaviour {
 
-        [SerializeField]
-        private StaffUIController staffUIController;
-
         //url to the json data, this is going to change to the actual application
         private string _uri = "https://dev.capnick.co.uk/faces.json";
         private static string file = "faces.json";
@@ -18,11 +15,9 @@ namespace Controllers {
               
 
         public void Start () {
-            DontDestroyOnLoad(gameObject);
             Debug.Log(staffData.LoadAllData());
             //once we have the data we set the reference to the staff data to the ui controller
             //so that the data can be used
-//            staffUIController.StaffData = staffData;
         }
 
         public void Update () {
