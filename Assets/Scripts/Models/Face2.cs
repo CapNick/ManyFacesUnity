@@ -50,6 +50,11 @@ namespace Models {
 			}
 		}
 
+	    public void OnDrawGizmos()
+	    {
+            Gizmos.DrawLine(transform.position, _lookingPos);
+	    }
 
-	}
+
+    }
 }
