@@ -37,7 +37,7 @@ namespace Controllers {
 	    private float speed = 0.5f;
 
         public void Awake() {
-			 _cameraFeed = new LiveCameraFeed();
+//			 _cameraFeed = new LiveCameraFeed();
 		}
 
 		// Use this for initialization
