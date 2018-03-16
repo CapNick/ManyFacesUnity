@@ -19,7 +19,9 @@ namespace Models {
         public string ovr_email;
         public string ovr_photo;
         public string ovr_phone;
-        public string order;
         
+        public bool visible;
+        public string order;
+
     }
 }

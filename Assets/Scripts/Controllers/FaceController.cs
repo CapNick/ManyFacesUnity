@@ -12,20 +12,21 @@ namespace Controllers {
 		public List<GameObject> Faces;
 		public bool DEBUG = false;
 	    public GameObject Pane;
+
+		public Vector2Int CameraDimensions;
 		
 //		[Header("Data Loading")]
 		private string _uri = "https://dev.capnick.co.uk/faces.json";
 		private string file = "faces.json";
 		private StaffData _staffData;
 
-		[Header("Spawning Area")] 
 		private const float FaceWidth = 2.553752f;
 		private const float FaceHeight = 3.537174f;
 
 		[Header("Screen info")] 
 		public float ScreenWidth;
 		public float ScreenHeight;
-		private int _facesPerLine = 9;
+		private int _facesPerLine = 10;
 		private int _facesLines = 4;
 		private int _maxFacesInScene = 36;
 
@@ -51,62 +52,62 @@ namespace Controllers {
         }
 	
 		// Update is called once per frame
-		void Update () {
-
-            GetImage();
-
-			if (Input.GetKeyDown(KeyCode.Space)) {
-				ReloadFaces();
-			}
-
-		    
-            //update faces looking ps
-		    if (_cameraFeed.FoundFace)
-		    {
-		        int desiredx = (int)(_cameraFeed.FaceLocations[0].x / 50);
-		        int desiredy = (int)(-_cameraFeed.FaceLocations[0].y / 100);
-
-		        if (desiredx > lastFacePos.x) {
-		            lastFacePos.x += speed;
-		        }
-		        else if (desiredx < lastFacePos.x) {
-		            lastFacePos.x -= speed;
-		        }
-
-		        if (desiredy > lastFacePos.y) {
-		            lastFacePos.y += speed;
-		        }
-		        else if (desiredy < lastFacePos.y) {
-		            lastFacePos.y -= speed;
-		        }
-
-		        Debug.Log("Detected face at " + lastFacePos.x + ", " + lastFacePos.y);
-            }
-		    else
-		    {
-		        int desiredx = 7;
-		        int desiredy = 0;
-
-		        if (desiredx > lastFacePos.x) {
-		            lastFacePos.x += speed;
-		        }
-		        else if (desiredx < lastFacePos.x) {
-		            lastFacePos.x -= speed;
-		        }
-
-		        if (desiredy > lastFacePos.y) {
-		            lastFacePos.y += speed;
-		        }
-		        else if (desiredy < lastFacePos.y) {
-		            lastFacePos.y -= speed;
-		        }
-		    }
-
-		    foreach (GameObject face in Faces) {
-		        face.transform.LookAt(lastFacePos);
-		        face.GetComponent<Face2>().UpdateLookingPosition(lastFacePos);
-		    }
-        }
+//		void Update () {
+//
+//            GetImage();
+//
+//			if (Input.GetKeyDown(KeyCode.Space)) {
+//				ReloadFaces();
+//			}
+//
+//		    
+//            //update faces looking ps
+//		    if (_cameraFeed.FoundFace)
+//		    {
+//		        int desiredx = (int)(_cameraFeed.FaceLocations[0].x / 50);
+//		        int desiredy = (int)(-_cameraFeed.FaceLocations[0].y / 100);
+//
+//		        if (desiredx > lastFacePos.x) {
+//		            lastFacePos.x += speed;
+//		        }
+//		        else if (desiredx < lastFacePos.x) {
+//		            lastFacePos.x -= speed;
+//		        }
+//
+//		        if (desiredy > lastFacePos.y) {
+//		            lastFacePos.y += speed;
+//		        }
+//		        else if (desiredy < lastFacePos.y) {
+//		            lastFacePos.y -= speed;
+//		        }
+//
+//		        Debug.Log("Detected face at " + lastFacePos.x + ", " + lastFacePos.y);
+//            }
+//		    else
+//		    {
+//		        int desiredx = 7;
+//		        int desiredy = 0;
+//
+//		        if (desiredx > lastFacePos.x) {
+//		            lastFacePos.x += speed;
+//		        }
+//		        else if (desiredx < lastFacePos.x) {
+//		            lastFacePos.x -= speed;
+//		        }
+//
+//		        if (desiredy > lastFacePos.y) {
+//		            lastFacePos.y += speed;
+//		        }
+//		        else if (desiredy < lastFacePos.y) {
+//		            lastFacePos.y -= speed;
+//		        }
+//		    }
+//
+//		    foreach (GameObject face in Faces) {
+//		        face.transform.LookAt(lastFacePos);
+//		        face.GetComponent<Face2>().UpdateLookingPosition(lastFacePos);
+//		    }
+//        }
 		
 		public void ReloadFaces() {
 			Debug.Log("Faces Updating...");
@@ -137,11 +138,12 @@ namespace Controllers {
 					//set the staff list reference
 					Face2 face2 = face.GetComponent<Face2>();
 					face2.staff = _staffData.Members[faceCounter];
+					face2.Location = new Vector2(x,y);
 					face2.DEBUG = DEBUG;
+					
 
 					face.transform.position = new Vector3((-ScreenWidth+FaceWidth)/2 + (FaceWidth + 0.553752f/2) * x + 0.553752f/3, 
 						(-ScreenHeight+FaceHeight)/2  + (FaceHeight + 0.537174f/2)* y + 0.537174f);
-
 					face.transform.SetParent(transform);
 				    Faces.Add(face);
                     faceCounter++;
@@ -168,7 +170,7 @@ namespace Controllers {
 	        MemoryStream mem = new MemoryStream();
 	        nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);
 	        //change this when necessary
-	        Texture2D cameraFeed = new Texture2D(1280, 720);
+	        Texture2D cameraFeed = new Texture2D(CameraDimensions.x, CameraDimensions.y);
 	        cameraFeed.LoadImage(mem.ToArray());
 
 	        Pane.GetComponent<Renderer>().material.mainTexture = cameraFeed;
