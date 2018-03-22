@@ -25,7 +25,7 @@ namespace Controllers {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.CompareTag("Face")) {
-                    Face2 face = hit.collider.GetComponent<Face2>();
+                    Face face = hit.collider.GetComponent<Face>();
                     StaffPanel.GetComponent<UI.Staff>().AssignedStaff = face.staff;
                     MoveStaffPanel(face);
                 }
@@ -35,7 +35,7 @@ namespace Controllers {
             }
         }
 
-        private void MoveStaffPanel(Face2 face) {
+        private void MoveStaffPanel(Face face) {
             //TODO: This wil need some better configuring in the future
             if (face.Location.x < 8) {
 //                face.transform.position + face.GetComponent<Collider>().bounds.size.x / 2 + ;

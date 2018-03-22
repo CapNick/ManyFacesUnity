@@ -37,7 +37,7 @@ namespace Controllers {
 	    private float speed = 0.5f;
 
         public void Awake() {
-//			 _cameraFeed = new LiveCameraFeed();
+			 _cameraFeed = new LiveCameraFeed();
 		}
 
 		// Use this for initialization
@@ -52,62 +52,62 @@ namespace Controllers {
         }
 	
 		// Update is called once per frame
-//		void Update () {
-//
-//            GetImage();
-//
-//			if (Input.GetKeyDown(KeyCode.Space)) {
-//				ReloadFaces();
-//			}
-//
-//		    
-//            //update faces looking ps
-//		    if (_cameraFeed.FoundFace)
-//		    {
-//		        int desiredx = (int)(_cameraFeed.FaceLocations[0].x / 50);
-//		        int desiredy = (int)(-_cameraFeed.FaceLocations[0].y / 100);
-//
-//		        if (desiredx > lastFacePos.x) {
-//		            lastFacePos.x += speed;
-//		        }
-//		        else if (desiredx < lastFacePos.x) {
-//		            lastFacePos.x -= speed;
-//		        }
-//
-//		        if (desiredy > lastFacePos.y) {
-//		            lastFacePos.y += speed;
-//		        }
-//		        else if (desiredy < lastFacePos.y) {
-//		            lastFacePos.y -= speed;
-//		        }
-//
-//		        Debug.Log("Detected face at " + lastFacePos.x + ", " + lastFacePos.y);
-//            }
-//		    else
-//		    {
-//		        int desiredx = 7;
-//		        int desiredy = 0;
-//
-//		        if (desiredx > lastFacePos.x) {
-//		            lastFacePos.x += speed;
-//		        }
-//		        else if (desiredx < lastFacePos.x) {
-//		            lastFacePos.x -= speed;
-//		        }
-//
-//		        if (desiredy > lastFacePos.y) {
-//		            lastFacePos.y += speed;
-//		        }
-//		        else if (desiredy < lastFacePos.y) {
-//		            lastFacePos.y -= speed;
-//		        }
-//		    }
-//
-//		    foreach (GameObject face in Faces) {
-//		        face.transform.LookAt(lastFacePos);
-//		        face.GetComponent<Face2>().UpdateLookingPosition(lastFacePos);
-//		    }
-//        }
+		void Update () {
+
+            GetImage();
+
+			if (Input.GetKeyDown(KeyCode.Space)) {
+				ReloadFaces();
+			}
+
+		    
+            //update faces looking ps
+		    if (_cameraFeed.FoundFace)
+		    {
+		        int desiredx = (int)(_cameraFeed.FaceLocations[0].x / 50);
+		        int desiredy = (int)(-_cameraFeed.FaceLocations[0].y / 100);
+
+		        if (desiredx > lastFacePos.x) {
+		            lastFacePos.x += speed;
+		        }
+		        else if (desiredx < lastFacePos.x) {
+		            lastFacePos.x -= speed;
+		        }
+
+		        if (desiredy > lastFacePos.y) {
+		            lastFacePos.y += speed;
+		        }
+		        else if (desiredy < lastFacePos.y) {
+		            lastFacePos.y -= speed;
+		        }
+
+		        Debug.Log("Detected face at " + lastFacePos.x + ", " + lastFacePos.y);
+            }
+		    else
+		    {
+		        int desiredx = 7;
+		        int desiredy = 0;
+
+		        if (desiredx > lastFacePos.x) {
+		            lastFacePos.x += speed;
+		        }
+		        else if (desiredx < lastFacePos.x) {
+		            lastFacePos.x -= speed;
+		        }
+
+		        if (desiredy > lastFacePos.y) {
+		            lastFacePos.y += speed;
+		        }
+		        else if (desiredy < lastFacePos.y) {
+		            lastFacePos.y -= speed;
+		        }
+		    }
+
+		    foreach (GameObject face in Faces) {
+		        face.transform.LookAt(lastFacePos);
+		        face.GetComponent<Face>().UpdateLookingPosition(lastFacePos);
+		    }
+        }
 		
 		public void ReloadFaces() {
 			Debug.Log("Faces Updating...");
@@ -135,8 +135,8 @@ namespace Controllers {
 				for (int x = 0; x < _facesPerLine; x++) {
 					GameObject face = Instantiate(FacePrefab);
 					face.name = "Face: " + x + "," + y + " ID: " + faceCounter;
-					//set the staff list reference
-					Face2 face2 = face.GetComponent<Face2>();
+                    //set the staff list reference
+				    Face face2 = face.GetComponent<Face>();
 					face2.staff = _staffData.Members[faceCounter];
 					face2.Location = new Vector2(x,y);
 					face2.DEBUG = DEBUG;

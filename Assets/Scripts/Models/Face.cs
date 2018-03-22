@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace Models {
-	public class Face2 : MonoBehaviour {
+	public class Face : MonoBehaviour {
 
 		[Header("Location Infomation")]
 		public Vector2 Location;
