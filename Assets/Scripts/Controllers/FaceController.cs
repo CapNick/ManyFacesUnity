@@ -12,21 +12,20 @@ namespace Controllers {
 		public List<GameObject> Faces;
 		public bool DEBUG = false;
 	    public GameObject Pane;
-
-		public Vector2Int CameraDimensions;
 		
 //		[Header("Data Loading")]
 		private string _uri = "https://dev.capnick.co.uk/faces.json";
 		private string file = "faces.json";
 		private StaffData _staffData;
 
+		[Header("Spawning Area")] 
 		private const float FaceWidth = 2.553752f;
 		private const float FaceHeight = 3.537174f;
 
 		[Header("Screen info")] 
 		public float ScreenWidth;
 		public float ScreenHeight;
-		private int _facesPerLine = 10;
+		private int _facesPerLine = 9;
 		private int _facesLines = 4;
 		private int _maxFacesInScene = 36;
 
@@ -175,8 +174,33 @@ namespace Controllers {
 
 			int faceIndex = 0;
 		    foreach (GameObject face in Faces) {
-		        face.transform.LookAt(lastFacePos);
-		        face.GetComponent<Face2>().UpdateLookingPosition(lastFacePos);
+				if (faceIndex < 18) {
+					face.transform.LookAt (lastFacePos[0]);
+					face.GetComponent<Face> ().UpdateLookingPosition (lastFacePos[0]);
+					faceIndex++;
+				} else if (faceIndex < 36) {
+					if (numFaces == 2) {
+						face.transform.LookAt (lastFacePos [1]);
+						face.GetComponent<Face> ().UpdateLookingPosition (lastFacePos [1]);
+						faceIndex++;
+					} else {
+						face.transform.LookAt (lastFacePos[0]);
+						face.GetComponent<Face> ().UpdateLookingPosition (lastFacePos[0]);
+						faceIndex++;
+					}
+				} else {
+					if (numFaces == 3) {
+						face.transform.LookAt (lastFacePos [2]);
+						face.GetComponent<Face> ().UpdateLookingPosition (lastFacePos [2]);
+						faceIndex++;
+					} else {
+						face.transform.LookAt (lastFacePos[0]);
+						face.GetComponent<Face> ().UpdateLookingPosition (lastFacePos[0]);
+						faceIndex++;
+					}
+				
+				}
+		        
 		    }
         }
 		
@@ -204,19 +228,18 @@ namespace Controllers {
 			int faceCounter = 0;
 			for (int y = 0; y < _facesLines; y++) {
 				for (int x = 0; x < _facesPerLine; x++) {
-					GameObject face = Instantiate(FacePrefab);
-					face.name = "Face: " + x + "," + y + " ID: " + faceCounter;
-                    //set the staff list reference
-				    Face face2 = face.GetComponent<Face>();
-					face2.staff = _staffData.Members[faceCounter];
-					face2.Location = new Vector2(x,y);
-					face2.DEBUG = DEBUG;
-					
+					GameObject faceGameObject = Instantiate(FacePrefab);
+					faceGameObject.name = "Face: " + x + "," + y + " ID: " + faceCounter;
+					//set the staff list reference
+					Face face = faceGameObject.GetComponent<Face>();
+					face.staff = _staffData.Members[faceCounter];
+					face.DEBUG = DEBUG;
 
-					face.transform.position = new Vector3((-ScreenWidth+FaceWidth)/2 + (FaceWidth + 0.553752f/2) * x + 0.553752f/3, 
+					faceGameObject.transform.position = new Vector3((-ScreenWidth+FaceWidth)/2 + (FaceWidth + 0.553752f/2) * x + 0.553752f/3, 
 						(-ScreenHeight+FaceHeight)/2  + (FaceHeight + 0.537174f/2)* y + 0.537174f);
-					face.transform.SetParent(transform);
-				    Faces.Add(face);
+
+					faceGameObject.transform.SetParent(transform);
+				    Faces.Add(faceGameObject);
                     faceCounter++;
 				}
 			}
@@ -241,7 +264,7 @@ namespace Controllers {
 	        MemoryStream mem = new MemoryStream();
 	        nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);
 	        //change this when necessary
-	        Texture2D cameraFeed = new Texture2D(CameraDimensions.x, CameraDimensions.y);
+	        Texture2D cameraFeed = new Texture2D(1280, 720);
 	        cameraFeed.LoadImage(mem.ToArray());
 
 	        Pane.GetComponent<Renderer>().material.mainTexture = cameraFeed;
