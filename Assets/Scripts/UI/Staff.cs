@@ -4,7 +4,6 @@ using UnityEngine.UI;
 namespace UI {
     public class Staff : MonoBehaviour {
         public Models.Staff AssignedStaff;
-        public GameObject stafInfomationGameObject;
         public Text Name;
         public Text Room;
         public Text Email;
@@ -17,7 +16,6 @@ namespace UI {
             if (AssignedStaff != null) {
                 //                gameObject.SetActive(true);
                 if (AssignedStaff.visible) {
-                    stafInfomationGameObject.SetActive(true);
 
                     //if member of staff is found the text elements are updated
                     //check if each field has a value so we dont put in incorrect data into the field
@@ -36,9 +34,6 @@ namespace UI {
                     Position.text = "Position: " + position;
                     Type.text = "Department: " + type;
                 }
-            }
-            else {
-                stafInfomationGameObject.SetActive(false);
             }
         }
 
