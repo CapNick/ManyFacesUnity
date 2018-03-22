@@ -12,12 +12,12 @@ using System.Collections.Generic;
 
 namespace Utils {
     public class CameraFeed : MonoBehaviour {
-        public static bool foundFace = false;
         private VideoCapture _capture;
         private CascadeClassifier _cascadeClassifier;
         public static float faceX;
         public static float faceY;
         public GameObject pane;
+		public static List<Rectangle> faces = new List<Rectangle>();
 
         void Start () {
             Debug.Log("CameraFeed Initialisation starting.");
@@ -64,9 +64,9 @@ namespace Utils {
             Mat frame = _capture.QueryFrame();
             IImage image = frame;
             long detectionTime;
-            List<Rectangle> faces = new List<Rectangle>();
+            
             List<Rectangle> eyes = new List<Rectangle>();
-
+			faces.Clear();
             //check for any faces in current frame
             Utils.DetectFaceCV.Detect(
                 image, "Assets/Resources/haarcascade_frontalface_default.xml",
@@ -76,7 +76,6 @@ namespace Utils {
 
             //
             if (faces.Capacity > 0) {
-                foundFace = true;
                 foreach (Rectangle face in faces) {
                     CvInvoke.Rectangle(image, face, new Rgba(1, 0, 0, 1).MCvScalar, 2);
                     faceX = face.X;
@@ -84,14 +83,12 @@ namespace Utils {
                 }
             }
             else {
-                foundFace = false;
+				faces.Clear();
+				Debug.Log ("No face found");
             }
             return image;
 
         }
-
-        public static bool FaceDetected () {
-            return foundFace;
-        }
+			
     }
 }

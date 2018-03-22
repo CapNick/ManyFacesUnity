@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Utils;
+using Emgu.CV;
 
 namespace Controllers {
 	public class Face : MonoBehaviour
@@ -40,9 +41,10 @@ namespace Controllers {
 		    //mousepos.x = mousepos.x - 500.0f;
 		    //_lookingTarget.position = mousepos;
 
-		    if (Utils.CameraFeed.FaceDetected()) {
-				int desiredx = (int)(CameraFeed.faceX / 50);
-				int desiredy = (int)(-CameraFeed.faceY / 100);
+			if (CameraFeed.faces.Count != 0) {
+	
+				int desiredx = (int)(CameraFeed.faces[0].X/ 50);
+				int desiredy = (int)(-CameraFeed.faces[0].Y / 100);
 
 				if (desiredx > lastFacePos.x) {
 					lastFacePos.x += speed;
@@ -55,9 +57,7 @@ namespace Controllers {
 				} else if (desiredy < lastFacePos.y) {
 					lastFacePos.y -= speed;
 				}
-
-				//lastFacePos.x = (CameraFeed.faceX / 100);
-				//lastFacePos.y = (-CameraFeed.faceY / 100);
+					
 				Debug.Log("Detected face at " + lastFacePos.x + ", " + lastFacePos.y);
 		    }
 		    else {
