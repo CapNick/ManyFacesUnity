@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 65764349386563082}
   m_Layer: 0
   m_Name: Face
-  m_TagString: Face
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4668664175489412}
   m_Layer: 0
   m_Name: model
-  m_TagString: Face
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,6 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db52cb5c89ac4f745a736f03279dd291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Location: {x: 0, y: 0}
+  Visible: 0
   staff:
     name: 
     room: 
@@ -377,9 +379,18 @@ MonoBehaviour:
     phone: 
     position: 
     _type: 
+    ovr_name: 
+    ovr_room: 
+    ovr_modules: 
+    ovr_email: 
+    ovr_photo: 
+    ovr_phone: 
+    visible: 0
+    order: 
   FaceRenderers:
   - {fileID: 23974329843539228}
   - {fileID: 23122912014606278}
+  FaceModel: {fileID: 1615573031074716}
   Selected: 0
   DEBUG: 0
   Painting: {fileID: 1022031881150288}

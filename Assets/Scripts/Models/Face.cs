@@ -2,11 +2,15 @@
 using UnityEngine;
 
 namespace Models {
-	public class Face2 : MonoBehaviour {
+	public class Face : MonoBehaviour {
 
+		[Header("Location Infomation")]
+		public Vector2 Location;
+		public bool Visible;
+		[Header("Elements")]
 		public Staff staff;
 		public Renderer[] FaceRenderers;
-
+		public GameObject FaceModel;
 		public bool Selected = false;
 
 		private Color _previousColor;
@@ -14,6 +18,7 @@ namespace Models {
 
 		public bool DEBUG;
 
+		
 
 		[Header("Faces Bounds")] 
 		public GameObject Painting;
@@ -22,7 +27,13 @@ namespace Models {
 		// Use this for initialization
 		void Start () {
 			_previousColor = FaceRenderers[0].material.color;
-//			Bounds = Painting.GetComponent<Renderer>().bounds.size;
+			//visability
+			Visible = staff.visible;
+			FaceModel.SetActive(staff.visible);
+			if (staff.visible) {
+				gameObject.tag = "Face";
+			}
+
 		}
 	
 		// Update is called once per frame
@@ -55,6 +66,7 @@ namespace Models {
             Gizmos.DrawLine(transform.position, _lookingPos);
 	    }
 
+		
 
     }
 }

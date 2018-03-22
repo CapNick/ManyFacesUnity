@@ -13,5 +13,15 @@ namespace Models {
         public string position;
         public string _type;
         
+        public string ovr_name;
+        public string ovr_room;
+        public string ovr_modules;
+        public string ovr_email;
+        public string ovr_photo;
+        public string ovr_phone;
+        
+        public bool visible;
+        public string order;
+
     }
 }
