@@ -38,9 +38,9 @@ namespace Controllers {
 		int yOffSet = 30;
 
         public void Awake() {
-			#if (LINUX || Windows)
+//			#if (LINUX || Windows)
 			_cameraFeed = new LiveCameraFeed();
-			#endif
+//			#endif
 
 			lastFacePos = new List<Vector3>();
 		}
@@ -49,7 +49,9 @@ namespace Controllers {
 		void Start () {
 			ScreenHeight = Camera.main.orthographicSize * 2.0f;
 			ScreenWidth = Camera.main.orthographicSize * 2.0f * Screen.width / Screen.height;
-			LoadFaces();
+			
+			
+//			LoadFaces();
 			Debug.Log("Total Faces " + _staffData.Members.Count);
 			lastFacePos.Add (new Vector3 ());
 			lastFacePos.Add (new Vector3 ());
@@ -60,7 +62,7 @@ namespace Controllers {
 		// Update is called once per frame
 		void Update () {
 
-//            GetImage();
+            GetImage();
 
 			if (Input.GetKeyDown(KeyCode.Space)) {
 				ReloadFaces();
@@ -223,10 +225,10 @@ namespace Controllers {
 			foreach (GameObject face in Faces) {
 				Destroy(face);
 			}
-			LoadFaces();
+//			LoadFaces();
 		}
 
-		public void LoadFaces() {
+		public void LoadStaff() {
 			if (_staffData == null) {
 				_staffData = new StaffData(file);
 				_staffData.LoadAllData();
@@ -236,7 +238,11 @@ namespace Controllers {
 			int vertMult = (int)Mathf.Floor(ScreenWidth / FaceWidth);
 			Debug.Log(horMult);
 			Debug.Log(vertMult);
-			
+
+		}
+
+
+		private void LoadFaces() {
 			int faceCounter = 0;
 			for (int y = 0; y < FacesLines; y++) {
 				for (int x = 0; x < FacesPerLine; x++) {
@@ -250,8 +256,8 @@ namespace Controllers {
 						(-ScreenHeight+FaceHeight)/2  + (FaceHeight + 0.537174f/2)* y + 0.537174f);
 
 					faceGameObject.transform.SetParent(transform);
-				    Faces.Add(faceGameObject);
-                    faceCounter++;
+					Faces.Add(faceGameObject);
+					faceCounter++;
 				}
 			}
 		}
@@ -273,15 +279,16 @@ namespace Controllers {
 		}
 
 	    private void GetImage () {
-	        IImage nextFrame = _cameraFeed.DetectPerson(); ;
-	        MemoryStream mem = new MemoryStream();
-	        nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);
-	        //change this when necessary
-	        Texture2D cameraFeed = new Texture2D(1280, 720);
-	        cameraFeed.LoadImage(mem.ToArray());
+	        IImage nextFrame = _cameraFeed.DetectPerson();
+		    if (Pane.activeInHierarchy) {
+			    MemoryStream mem = new MemoryStream();
+			    nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);
+			    //change this when necessary
+			    Texture2D cameraFeed = new Texture2D(1280, 720);
+			    cameraFeed.LoadImage(mem.ToArray());
 
-	        Pane.GetComponent<Renderer>().material.mainTexture = cameraFeed;
-
+			    Pane.GetComponent<Renderer>().material.mainTexture = cameraFeed;
+		    }
 	    }
     }
 }

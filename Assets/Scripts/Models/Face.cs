@@ -1,7 +1,9 @@
 ﻿using Models;
+using TriLib;
 using UnityEngine;
 
 namespace Models {
+	[RequireComponent(typeof(AssetDownloader))]
 	public class Face : MonoBehaviour {
 
 		[Header("Location Infomation")]
@@ -12,7 +14,9 @@ namespace Models {
 		public Renderer[] FaceRenderers;
 		public GameObject FaceModel;
 		public bool Selected = false;
+		public float Progress = 0;
 
+		private AssetDownloader _downloader;
 		private Color _previousColor;
 		private Vector3 _lookingPos;
 
@@ -21,18 +25,31 @@ namespace Models {
 			
 		// Use this for initialization
 		void Start () {
-			_previousColor = FaceRenderers[0].material.color;
+			_downloader = GetComponent<AssetDownloader>();
+			_downloader.AssetURI = staff.model_url;
 			//visability
 			Visible = staff.visible;
-			FaceModel.SetActive(staff.visible);
-			if (staff.visible) {
-				gameObject.tag = "Face";
+			
+			if (FaceModel != null) {
+				FaceModel.SetActive(staff.visible);
+				if (staff.visible) {
+					gameObject.tag = "Face";
+					
+				}
 			}
+			
 
+		}
+
+		void Update() {
+			if (!_downloader.IsDone) {
+				Progress = _downloader.Progress;
+			}
 		}
 
 		public void UpdateLookingPosition(Vector3 lookingPos) {
 			_lookingPos = lookingPos;
+			
 			//set anything else needed
 		}
 
@@ -40,8 +57,6 @@ namespace Models {
 	    {
             Gizmos.DrawLine(transform.position, _lookingPos);
 	    }
-
-		
 
     }
 }
