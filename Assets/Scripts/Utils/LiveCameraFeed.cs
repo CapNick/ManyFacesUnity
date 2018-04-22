@@ -48,7 +48,7 @@ namespace Utils {
             List<Rectangle> eyes = new List<Rectangle>();
 
             //check for any faces in current frame
-            Utils.DetectFaceCV.Detect(
+            DetectFaceCV.Detect(
                 image, "Assets/Resources/haarcascade_frontalface_default.xml",
                 "Assets/Resources/haarcascade_eye.xml",
                 faces, eyes,
@@ -60,8 +60,6 @@ namespace Utils {
                 foreach (Rectangle face in faces) {
                     CvInvoke.Rectangle(image, face, new Rgba(1, 0, 0, 1).MCvScalar, 2);
                     FaceLocations.Add(new Vector2(face.X, face.Y));
-//                    faceX = face.X;
-//                    faceY = face.Y;
                 }
             }
             else {

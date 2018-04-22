@@ -26,7 +26,7 @@ namespace Models {
 		// Use this for initialization
 		void Start () {
 			_downloader = GetComponent<AssetDownloader>();
-			_downloader.AssetURI = staff.model_url;
+//			_downloader.AssetURI = staff.model_file;
 			//visability
 			Visible = staff.visible;
 			

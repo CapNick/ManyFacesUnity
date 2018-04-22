@@ -2,7 +2,8 @@
 # Unity folders and files
 ###
 [Aa]ssets/AssetStoreTools*
-[Aa]ssets/Plugins*
+[Aa]ssets/Plugins/ProCore*
+[Aa]ssets/Plugins/Editor*
 [Bb]uild/
 [Ll]ibrary/
 [Ll]ocal[Cc]ache/

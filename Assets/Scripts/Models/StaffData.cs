@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Models { 
     public class StaffData {
         public List<Staff> Members { get; private set; }
-        private string dataAsJson;
+        private JObject dataAsJson;
         private string filename;
 
         public StaffData(string filename) {
@@ -20,10 +20,11 @@ namespace Models {
             //TODO: Look up website to check for changes if changes exsist download the file and overwrite.
             string filePath = Path.Combine(Application.streamingAssetsPath, filename);
             if (File.Exists(filePath)) {
-                dataAsJson = File.ReadAllText(filePath);
+                dataAsJson = JObject.Parse(File.ReadAllText(filePath));
                 // Pass the json to JsonUtility, and tell it to create a GameData object from it.
-                Members = JsonConvert.DeserializeObject<List<Staff>>(dataAsJson);
-                LoadModels();
+                Debug.Log(dataAsJson.First);
+//                Members = JsonConvert.DeserializeObject<List<Staff>>(dataAsJson);
+//                LoadModels();
                 return "StaffData ==> Staff Data Loaded Sucessfully";
             }
             else {

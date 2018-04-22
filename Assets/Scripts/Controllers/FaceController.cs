@@ -15,8 +15,9 @@ namespace Controllers {
 		
 //		[Header("Data Loading")]
 		private string _uri = "https://dev.capnick.co.uk/faces.json";
-		private string file = "faces.json";
+		private string file = "collection.json";
 		private StaffData _staffData;
+		public List<Staff> StaffList;
 
 		[Header("Spawning Area")] 
 		private const float FaceWidth = 2.553752f;
@@ -39,7 +40,7 @@ namespace Controllers {
 
         public void Awake() {
 //			#if (LINUX || Windows)
-			_cameraFeed = new LiveCameraFeed();
+//			_cameraFeed = new LiveCameraFeed();
 //			#endif
 
 			lastFacePos = new List<Vector3>();
@@ -51,7 +52,8 @@ namespace Controllers {
 			ScreenWidth = Camera.main.orthographicSize * 2.0f * Screen.width / Screen.height;
 			
 			
-//			LoadFaces();
+			LoadStaff();
+			StaffList = _staffData.Members;
 			Debug.Log("Total Faces " + _staffData.Members.Count);
 			lastFacePos.Add (new Vector3 ());
 			lastFacePos.Add (new Vector3 ());
@@ -62,7 +64,7 @@ namespace Controllers {
 		// Update is called once per frame
 		void Update () {
 
-            GetImage();
+//            GetImage();
 
 			if (Input.GetKeyDown(KeyCode.Space)) {
 				ReloadFaces();

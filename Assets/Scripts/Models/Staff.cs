@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 
 namespace Models {
     [Serializable]
-    public class Staff
-    {
+    public class Staff {
+        public int id;
         public string name;
         public string room;
         public string email;
@@ -18,8 +19,8 @@ namespace Models {
         public string ovr_phone;
         
         public bool visible;
-        public string model_url;
-        public string order;
+        public IList model_file;
+        public string _index;
 
     }
 }
