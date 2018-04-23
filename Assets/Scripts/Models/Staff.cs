@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Models {
     [Serializable]
@@ -14,13 +15,13 @@ namespace Models {
         
         public string ovr_name;
         public string ovr_room;
-        public string ovr_modules;
         public string ovr_email;
         public string ovr_phone;
+        public string ovr_position;
+        public string ovr_type;
         
-        public bool visible;
-        public IList model_file;
-        public string _index;
-
+        public Dictionary<string,string> model_file;
+        public int _index;
+        public string updated_at;
     }
 }

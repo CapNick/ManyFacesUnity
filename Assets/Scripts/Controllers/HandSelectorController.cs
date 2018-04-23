@@ -26,7 +26,7 @@ namespace Controllers {
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.CompareTag("Face")) {
                     Face face = hit.collider.GetComponent<Face>();
-                    StaffPanel.GetComponent<UI.Staff>().AssignedStaff = face.staff;
+                    StaffPanel.GetComponent<UI.Staff>().AssignedStaff = face.Staff;
                     MoveStaffPanel(face);
                 }
                 else {

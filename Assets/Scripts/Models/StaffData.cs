@@ -7,11 +7,12 @@ using UnityEngine;
 namespace Models { 
     public class StaffData {
         public List<Staff> Members { get; private set; }
-        private JObject dataAsJson;
+        private string _dataAsJson;
         private string filename;
 
         public StaffData(string filename) {
             this.filename = filename;
+            Members = new List<Staff>();
         }
 
         //loads data from a json string and serializes it into the members array
@@ -20,10 +21,13 @@ namespace Models {
             //TODO: Look up website to check for changes if changes exsist download the file and overwrite.
             string filePath = Path.Combine(Application.streamingAssetsPath, filename);
             if (File.Exists(filePath)) {
-                dataAsJson = JObject.Parse(File.ReadAllText(filePath));
+//                _dataAsJson = JObject.Parse(File.ReadAllText(filePath));
+                _dataAsJson = File.ReadAllText(filePath);
                 // Pass the json to JsonUtility, and tell it to create a GameData object from it.
-                Debug.Log(dataAsJson.First);
-//                Members = JsonConvert.DeserializeObject<List<Staff>>(dataAsJson);
+                
+                
+//                Debug.Log(_dataAsJson.First);
+                Members = JsonConvert.DeserializeObject<List<Staff>>(_dataAsJson);
 //                LoadModels();
                 return "StaffData ==> Staff Data Loaded Sucessfully";
             }
@@ -34,14 +38,10 @@ namespace Models {
             
         }
 
-        public void LoadModels() {
+        public void GetModels() {
             string filePath = Application.streamingAssetsPath;
             foreach (var staff in Members) {
-                if (staff.visible) {
-                    if (File.Exists(Path.Combine(filePath, "testing.fbx"))) {
-                        
-                    }
-                }
+                
             }
         }
         

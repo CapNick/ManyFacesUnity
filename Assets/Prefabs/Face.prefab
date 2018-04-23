@@ -199,28 +199,27 @@ MonoBehaviour:
   Location: {x: 0, y: 0}
   Visible: 0
   staff:
+    id: 0
     name: 
     room: 
-    modules: 
     email: 
-    photo: 
     phone: 
     position: 
     _type: 
     ovr_name: 
     ovr_room: 
-    ovr_modules: 
     ovr_email: 
-    ovr_photo: 
     ovr_phone: 
-    visible: 0
-    model_url: 
-    order: 
+    ovr_position: 
+    ovr_type: 
+    _index: 0
+    updated_at: 
   FaceRenderers:
   - {fileID: 0}
   - {fileID: 0}
   FaceModel: {fileID: 0}
   Selected: 0
+  Progress: 0
   Painting: {fileID: 1022031881150288}
 --- !u!114 &114980793141382584
 MonoBehaviour:
@@ -234,6 +233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AssetURI: https://dev.capnick.co.uk/testing.fbx
-  AssetExtension: .fbx
+  AssetExtension: .obj
   WrapperGameObject: {fileID: 1301905838405760}
-  ShowProgress: 0
+  ShowProgress: 1

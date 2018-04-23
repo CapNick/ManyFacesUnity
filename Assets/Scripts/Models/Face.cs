@@ -8,10 +8,8 @@ namespace Models {
 
 		[Header("Location Infomation")]
 		public Vector2 Location;
-		public bool Visible;
 		[Header("Elements")]
-		public Staff staff;
-		public Renderer[] FaceRenderers;
+		public Staff Staff;
 		public GameObject FaceModel;
 		public bool Selected = false;
 		public float Progress = 0;
@@ -26,25 +24,19 @@ namespace Models {
 		// Use this for initialization
 		void Start () {
 			_downloader = GetComponent<AssetDownloader>();
-//			_downloader.AssetURI = staff.model_file;
-			//visability
-			Visible = staff.visible;
+			_downloader.AssetURI = Staff.model_file["url"];
 			
 			if (FaceModel != null) {
-				FaceModel.SetActive(staff.visible);
-				if (staff.visible) {
 					gameObject.tag = "Face";
-					
-				}
 			}
-			
-
 		}
 
 		void Update() {
 			if (!_downloader.IsDone) {
 				Progress = _downloader.Progress;
 			}
+			
+			
 		}
 
 		public void UpdateLookingPosition(Vector3 lookingPos) {
