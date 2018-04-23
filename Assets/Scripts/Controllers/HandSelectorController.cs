@@ -26,11 +26,13 @@ namespace Controllers {
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.CompareTag("Face")) {
                     Face face = hit.collider.GetComponent<Face>();
+                    StaffPanel.SetActive(true);
                     StaffPanel.GetComponent<UI.Staff>().AssignedStaff = face.Staff;
                     MoveStaffPanel(face);
                 }
                 else {
                     StaffPanel.GetComponent<UI.Staff>().ClearStaff();
+                    StaffPanel.SetActive(false);
                 }
             }
         }
@@ -43,7 +45,7 @@ namespace Controllers {
 
             }
             else {
-
+                StaffPanel.transform.position =  new Vector3(face.transform.position.x + FaceWidth/2, face.transform.position.y + FaceHeight/2, -2f);
             }
         }
     }

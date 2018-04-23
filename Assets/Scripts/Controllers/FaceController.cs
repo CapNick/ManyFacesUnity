@@ -10,12 +10,9 @@ namespace Controllers {
 		[Header("Faces Objects")]
 		public GameObject FacePrefab;
 		public List<GameObject> Faces;
-		public bool DEBUG = false;
 	    public GameObject Pane;
 		
 //		[Header("Data Loading")]
-		private string _uri = "https://dev.capnick.co.uk/faces.json";
-		private string file = "collection.json";
 		private StaffData _staffData;
 		public List<Staff> StaffList;
 
@@ -29,6 +26,8 @@ namespace Controllers {
 		public int FacesPerLine = 10;
 		public int FacesLines = 4;
 
+		private LayoutLoader _layoutLoader;
+
 		private LiveCameraFeed _cameraFeed;
 
         //Tracking variables
@@ -40,9 +39,9 @@ namespace Controllers {
 
         public void Awake() {
 //			#if (LINUX || Windows)
-			_cameraFeed = new LiveCameraFeed();
+//			_cameraFeed = new LiveCameraFeed();
 //			#endif
-
+			
 			lastFacePos = new List<Vector3>();
 		}
 
@@ -50,8 +49,8 @@ namespace Controllers {
 		void Start () {
 			ScreenHeight = Camera.main.orthographicSize * 2.0f;
 			ScreenWidth = Camera.main.orthographicSize * 2.0f * Screen.width / Screen.height;
-			
-			
+			_layoutLoader = new LayoutLoader();
+			LoadScreenSettings();
 			LoadStaff();
 			StaffList = _staffData.Members;
 			LoadFaces();
@@ -65,11 +64,8 @@ namespace Controllers {
 		// Update is called once per frame
 		void Update () {
 
-            GetImage();
+//            GetImage();
 
-			if (Input.GetKeyDown(KeyCode.Space)) {
-				ReloadFaces();
-			}
 
 			if (_cameraFeed != null) {
 				//update faces looking ps
@@ -233,17 +229,25 @@ namespace Controllers {
 //			LoadFaces();
 		}
 
-		public void LoadStaff() {
-			if (_staffData == null) {
-				_staffData = new StaffData(file);
-				_staffData.LoadAllData();
-			}
-			
-			int horMult = (int)Mathf.Floor(ScreenHeight / FaceHeight);
-			int vertMult = (int)Mathf.Floor(ScreenWidth / FaceWidth);
-			Debug.Log(horMult);
-			Debug.Log(vertMult);
+		private void LoadScreenSettings() {
+//			int horMult = Mathf.FloorToInt(ScreenHeight / FaceHeight);
+//			int vertMult = Mathf.FloorToInt(ScreenWidth / FaceWidth);
+//			Debug.Log(horMult);
+//			Debug.Log(vertMult);
 
+			_layoutLoader.Getlayout();
+			
+			FacesLines = _layoutLoader.BoardLayout.height;
+			FacesPerLine = _layoutLoader.BoardLayout.width;
+
+		}
+		
+
+		private void LoadStaff() {
+			if (_staffData == null) {
+				_staffData = new StaffData();
+				_staffData.GetStaff();
+			}
 		}
 
 
@@ -285,6 +289,7 @@ namespace Controllers {
 
 	    private void GetImage () {
 	        IImage nextFrame = _cameraFeed.DetectPerson();
+		    //checks if the debug plane is active or not
 		    if (Pane.activeInHierarchy) {
 			    MemoryStream mem = new MemoryStream();
 			    nextFrame.Bitmap.Save(mem, nextFrame.Bitmap.RawFormat);

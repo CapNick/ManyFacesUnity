@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Controllers;
+using Models;
 using TriLib;
 using UnityEngine;
 
@@ -11,10 +12,10 @@ namespace Models {
 		[Header("Elements")]
 		public Staff Staff;
 		public GameObject FaceModel;
-		public bool Selected = false;
-		public float Progress = 0;
+		public string MissingModel = "question_mark.fbx";
 
 		private AssetDownloader _downloader;
+		private AssetLoader _loader;
 		private Color _previousColor;
 		private Vector3 _lookingPos;
 
@@ -24,31 +25,35 @@ namespace Models {
 		// Use this for initialization
 		void Start () {
 			_downloader = GetComponent<AssetDownloader>();
-			_downloader.AssetURI = Staff.model_file["url"];
-			
-			if (FaceModel != null) {
-					gameObject.tag = "Face";
-			}
+			_loader = new AssetLoader();
+			LoadFace();
 		}
 
 		void Update() {
-			if (!_downloader.IsDone) {
-				Progress = _downloader.Progress;
-			}
-			
 			
 		}
 
 		public void UpdateLookingPosition(Vector3 lookingPos) {
 			_lookingPos = lookingPos;
 			
-			//set anything else needed
 		}
 
-	    public void OnDrawGizmos()
-	    {
+	    public void OnDrawGizmos() {
             Gizmos.DrawLine(transform.position, _lookingPos);
 	    }
+
+		private void LoadFace() {
+			string fileLocation = Staff.model_file["url"];
+			if (fileLocation != null) {
+				if (_loader != null) {
+					_loader.Dispose();
+				}
+				_downloader.AssetURI = SettingsLoader.Instance.Setting.base_url + fileLocation;
+			}
+			else {
+				_loader.LoadFromFile(Application.streamingAssetsPath+"/models/"+MissingModel);
+			}
+		}
 
     }
 }

@@ -197,8 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Location: {x: 0, y: 0}
-  Visible: 0
-  staff:
+  Staff:
     id: 0
     name: 
     room: 
@@ -214,9 +213,6 @@ MonoBehaviour:
     ovr_type: 
     _index: 0
     updated_at: 
-  FaceRenderers:
-  - {fileID: 0}
-  - {fileID: 0}
   FaceModel: {fileID: 0}
   Selected: 0
   Progress: 0
@@ -232,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42f531ab751188459d8b2fb852b727e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AssetURI: https://dev.capnick.co.uk/testing.fbx
+  AssetURI: 
   AssetExtension: .obj
   WrapperGameObject: {fileID: 1301905838405760}
   ShowProgress: 1

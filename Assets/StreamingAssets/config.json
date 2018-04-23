@@ -1,4 +1,5 @@
-[{
-	"staff_url":"",
-	"layout_url":""
-}]
+{
+	"staff_url":"http://localhost:3000/faces/collection.json",
+	"layout_url":"http://localhost:3000/layouts.json",
+	"base_url":"http://localhost:3000/"
+}

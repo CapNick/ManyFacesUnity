@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿using Controllers;
 using Models;
 using NUnit.Framework;
-using UnityEngine.TestTools;
 
 namespace Tests {
 	public class StaffDataTest {
@@ -9,8 +8,8 @@ namespace Tests {
 
 		[SetUp]
 		public void Init() {
-			_data = new StaffData("collection.json");
-			_data.LoadAllData();
+			_data = new StaffData();
+			_data.GetStaff();
 		}
 		
 		[Test]
@@ -22,7 +21,7 @@ namespace Tests {
 		[Test]
 		public void ReturnsStaffListCount() {
 			// Use the Assert class to test conditions.
-			Assert.AreEqual(66, _data.Members.Count);
+			Assert.AreEqual(typeof(int), _data.Members.Count.GetType());
 		}
 		
 		[Test]
@@ -34,7 +33,7 @@ namespace Tests {
 		[Test]
 		public void ReturnsStaffName() {
 			// Use the Assert class to test conditions.
-			Assert.AreEqual("Natasha Alechina", _data.Members[0].name);
+			Assert.AreEqual(typeof(string), _data.Members[0].name.GetType());
 		}
 		
 		[Test]
@@ -111,7 +110,7 @@ namespace Tests {
 
 		[Test]
 		public void ReturnsStaffModelUrl() {
-			Assert.AreEqual("/uploads/face/model_file/13/natashaalechina.obj", _data.Members[0].model_file["url"]);
+			Assert.AreEqual(null, _data.Members[0].model_file["url"]);
 		}
 		[Test]
 		public void ReturnsStaffUpdatedAt() {
