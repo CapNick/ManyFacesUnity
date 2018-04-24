@@ -1,18 +1,22 @@
-﻿using Models;
+﻿using Controllers;
+using Models;
+using TMPro;
+using TriLib;
 using UnityEngine;
 
 namespace Models {
+	[RequireComponent(typeof(AssetDownloader))]
 	public class Face : MonoBehaviour {
 
 		[Header("Location Infomation")]
 		public Vector2 Location;
-		public bool Visible;
 		[Header("Elements")]
-		public Staff staff;
-		public Renderer[] FaceRenderers;
+		public Staff Staff;
 		public GameObject FaceModel;
-		public bool Selected = false;
+		public GameObject MissingModel;
+	    public TextMeshPro TextMesh;
 
+		private AssetDownloader _downloader;
 		private Color _previousColor;
 		private Vector3 _lookingPos;
 
@@ -21,27 +25,34 @@ namespace Models {
 			
 		// Use this for initialization
 		void Start () {
-			_previousColor = FaceRenderers[0].material.color;
-			//visability
-			Visible = staff.visible;
-			FaceModel.SetActive(staff.visible);
-			if (staff.visible) {
-				gameObject.tag = "Face";
-			}
+			_downloader = GetComponent<AssetDownloader>();
+			_downloader.WrapperGameObject = gameObject;
+		    TextMesh.text = Staff.name;
+			LoadFace();
+		}
 
+		void Update() {
+			
 		}
 
 		public void UpdateLookingPosition(Vector3 lookingPos) {
 			_lookingPos = lookingPos;
-			//set anything else needed
+			
 		}
 
-	    public void OnDrawGizmos()
-	    {
+	    public void OnDrawGizmos() {
             Gizmos.DrawLine(transform.position, _lookingPos);
 	    }
 
-		
+		private void LoadFace() {
+			string fileLocation = Staff.model_file["url"];
+			if (fileLocation != null) {
+				_downloader.AssetURI = SettingsLoader.Instance.Setting.base_url + fileLocation;
+			}
+			else {
+				MissingModel.SetActive(true);
+			}
+		}
 
     }
 }
