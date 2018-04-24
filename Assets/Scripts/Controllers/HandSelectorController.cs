@@ -45,7 +45,7 @@ namespace Controllers {
 
             }
             else {
-                StaffPanel.transform.position =  new Vector3(face.transform.position.x + FaceWidth/2, face.transform.position.y + FaceHeight/2, -2f);
+                StaffPanel.transform.position = new Vector3(face.transform.position.x - FaceWidth * 2.5f, face.transform.position.y + FaceHeight / 2, - 2f);
             }
         }
     }
