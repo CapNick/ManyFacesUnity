@@ -513,7 +513,7 @@ PlayerSettings:
   webGLUseWasm: 0
   webGLCompressionFormat: 1
   scriptingDefineSymbols:
-    1: ODIN_INSPECTOR;TRILIB_USE_DEVIL
+    1: ODIN_INSPECTOR;TRILIB_USE_DEVIL;TRILIB_OUTPUT_MESSAGES
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}

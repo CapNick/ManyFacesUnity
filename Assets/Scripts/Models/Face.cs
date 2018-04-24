@@ -1,5 +1,6 @@
 ﻿using Controllers;
 using Models;
+using TMPro;
 using TriLib;
 using UnityEngine;
 
@@ -12,10 +13,10 @@ namespace Models {
 		[Header("Elements")]
 		public Staff Staff;
 		public GameObject FaceModel;
-		public string MissingModel = "question_mark.fbx";
+		public GameObject MissingModel;
+	    public TextMeshPro TextMesh;
 
 		private AssetDownloader _downloader;
-		private AssetLoader _loader;
 		private Color _previousColor;
 		private Vector3 _lookingPos;
 
@@ -25,7 +26,8 @@ namespace Models {
 		// Use this for initialization
 		void Start () {
 			_downloader = GetComponent<AssetDownloader>();
-			_loader = new AssetLoader();
+			_downloader.WrapperGameObject = gameObject;
+		    TextMesh.text = Staff.name;
 			LoadFace();
 		}
 
@@ -45,13 +47,10 @@ namespace Models {
 		private void LoadFace() {
 			string fileLocation = Staff.model_file["url"];
 			if (fileLocation != null) {
-				if (_loader != null) {
-					_loader.Dispose();
-				}
 				_downloader.AssetURI = SettingsLoader.Instance.Setting.base_url + fileLocation;
 			}
 			else {
-				_loader.LoadFromFile(Application.streamingAssetsPath+"/models/"+MissingModel);
+				MissingModel.SetActive(true);
 			}
 		}
 
