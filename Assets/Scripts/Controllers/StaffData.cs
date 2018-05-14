@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Models;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace Controllers {
             string json = webRequest.text;
             if (json != "") {
                 Members = JsonConvert.DeserializeObject<List<Staff>>(json);
+                OrderStaff();
                 return "StaffData ==> Staff Data Loaded Sucessfully";
             }
 
@@ -30,7 +32,7 @@ namespace Controllers {
         }
         
         private void OrderStaff() {
-            
+            Members = Members.OrderBy(s => s._index).ToList();
         }
 
         //checks data currently in the array to see if the members of staff have been updated

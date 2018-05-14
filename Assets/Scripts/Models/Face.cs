@@ -12,10 +12,13 @@ namespace Models {
 		public Vector2 Location;
 		[Header("Elements")]
 		public Staff Staff;
+		[Header("Face")]
 		public GameObject FaceModel;
 		public GameObject MissingModel;
-	    public TextMeshPro TextMesh;
-
+		
+	    public TextMeshPro Name;
+	    public TextMeshPro Label;
+		
 		private AssetDownloader _downloader;
 		private Color _previousColor;
 		private Vector3 _lookingPos;
@@ -27,8 +30,7 @@ namespace Models {
 		void Start () {
 			_downloader = GetComponent<AssetDownloader>();
 			_downloader.WrapperGameObject = gameObject;
-		    TextMesh.text = Staff.name;
-			LoadFace();
+			LoadFaceModel();
 		}
 
 		void Update() {
@@ -43,8 +45,10 @@ namespace Models {
 	    public void OnDrawGizmos() {
             Gizmos.DrawLine(transform.position, _lookingPos);
 	    }
+		
+		
 
-		private void LoadFace() {
+		private void LoadFaceModel() {
 			string fileLocation = Staff.model_file["url"];
 			if (fileLocation != null) {
 				_downloader.AssetURI = SettingsLoader.Instance.Setting.base_url + fileLocation;
