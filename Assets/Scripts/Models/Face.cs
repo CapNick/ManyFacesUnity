@@ -1,4 +1,5 @@
 ﻿using Controllers;
+using Emgu.CV.Structure;
 using Models;
 using TMPro;
 using TriLib;
@@ -15,9 +16,16 @@ namespace Models {
 		[Header("Face")]
 		public GameObject FaceModel;
 		public GameObject MissingModel;
-		
+
+//		[Header("Loading Effects")]
+//		public GameObject EffectPrefab;
+		[SerializeField]
+		private bool _loaded;
+
+		[Header("Labels")]
 	    public TextMeshPro Name;
 	    public TextMeshPro Label;
+		public GameObject LabelPanel;
 		
 		private AssetDownloader _downloader;
 		private Color _previousColor;
@@ -27,14 +35,23 @@ namespace Models {
 		public GameObject Painting;
 			
 		// Use this for initialization
-		void Start () {
+		public void Setup (Staff staff, Vector2 location) {
 			_downloader = GetComponent<AssetDownloader>();
+			Staff = staff;
+			Location = location;
 			_downloader.WrapperGameObject = gameObject;
 			LoadFaceModel();
+
+
+			SetLabels();
 		}
 
 		void Update() {
-			
+			if (_downloader.IsDone && !_loaded) {
+				_loaded = true;
+//				GameObject go = Instantiate(EffectPrefab, transform.position, Quaternion.identity);
+//				Destroy(go, 1f);
+			}
 		}
 
 		public void UpdateLookingPosition(Vector3 lookingPos) {
@@ -45,8 +62,23 @@ namespace Models {
 	    public void OnDrawGizmos() {
             Gizmos.DrawLine(transform.position, _lookingPos);
 	    }
-		
-		
+
+		private void SetLabels() {
+			if (string.IsNullOrEmpty(Staff.ovr_name)) {
+				Name.text = Staff.name;
+			}
+			else {
+				Name.text = Staff.ovr_name;
+			}
+
+			if (string.IsNullOrEmpty(Staff.label)) {
+				LabelPanel.SetActive(false);
+			}
+			else {
+				LabelPanel.SetActive(true);
+				Label.text = Staff.label;
+			}
+		}
 
 		private void LoadFaceModel() {
 			string fileLocation = Staff.model_file["url"];

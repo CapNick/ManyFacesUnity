@@ -11,7 +11,6 @@ namespace Controllers {
         
         [Header("Data Loading")]
         private StaffData _staffData;
-        public List<Staff> StaffList;
 
         [Header("Spawning Area")] 
         private LayoutLoader _layoutLoader;
@@ -30,7 +29,6 @@ namespace Controllers {
             _layoutLoader = new LayoutLoader();
             LoadScreenSettings();
             LoadStaff();
-            StaffList = _staffData.Members;
             LoadFaces();
             Debug.Log("Total Faces " + _staffData.Members.Count);
         }
@@ -76,8 +74,7 @@ namespace Controllers {
                         faceGameObject.name = "Face: " + x + "," + y + " ID: " + faceCounter;
                         //set the staff list reference
                         Face face = faceGameObject.GetComponent<Face>();
-                        face.Staff = _staffData.Members[faceCounter];
-                        face.Location = new Vector2(x,y);
+                        face.Setup(_staffData.Members[faceCounter], new Vector2(x,y));
 	
                         faceGameObject.transform.position = new Vector3((-ScreenWidth+FaceWidth)/2 + (FaceWidth + 0.553752f/2) * x + 0.553752f/3, 
                             (-ScreenHeight+FaceHeight)/2  + (FaceHeight + 0.537174f/2)* y + 0.537174f);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Models {
@@ -22,6 +21,7 @@ namespace Models {
         
         public Dictionary<string,string> model_file;
         public int _index;
+        public string label;
         public string updated_at;
     }
 }

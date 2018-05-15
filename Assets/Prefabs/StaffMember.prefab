@@ -155,14 +155,14 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 486d061e093b6434ea3776269972f9ce, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Room: '
 --- !u!114 &114147613437665382
@@ -188,14 +188,14 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 486d061e093b6434ea3776269972f9ce, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Position: '
 --- !u!114 &114434651639643404
@@ -221,14 +221,14 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 486d061e093b6434ea3776269972f9ce, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Department: '
 --- !u!114 &114575776966035866
@@ -281,14 +281,14 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 486d061e093b6434ea3776269972f9ce, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Email Address: '
 --- !u!114 &114760858875745762
@@ -314,14 +314,14 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 486d061e093b6434ea3776269972f9ce, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Name: '
 --- !u!114 &114819608277426388
@@ -350,6 +350,7 @@ MonoBehaviour:
     ovr_position: 
     ovr_type: 
     _index: 0
+    label: 
     updated_at: 
   Name: {fileID: 114760858875745762}
   Room: {fileID: 114046762347650714}
@@ -380,14 +381,14 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 486d061e093b6434ea3776269972f9ce, type: 3}
     m_FontSize: 18
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Phone Number: '
 --- !u!114 &114962698943933350

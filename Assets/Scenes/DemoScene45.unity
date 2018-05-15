@@ -233,7 +233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FacePrefab: {fileID: 1301905838405760, guid: f47d11805ec8649e289fe2554062e22e, type: 2}
   Faces: []
-  StaffList: []
   ScreenWidth: 0
   ScreenHeight: 0
   FacesPerLine: 10
