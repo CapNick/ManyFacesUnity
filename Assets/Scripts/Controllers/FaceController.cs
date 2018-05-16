@@ -24,7 +24,7 @@ namespace Controllers {
 
         public void Awake() {
 //			#if (LINUX || Windows)
-//			_cameraFeed = new LiveCameraFeed();
+			_cameraFeed = new LiveCameraFeed();
 //			#endif
 			lastFacePos = new List<Vector3>();
 		}

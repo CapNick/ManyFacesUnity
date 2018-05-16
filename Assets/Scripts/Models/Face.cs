@@ -86,8 +86,8 @@ namespace Models {
 					// run loop till it is done
 					
 				}
-				_downloader.WrapperGameObject.GetComponentInChildren<GameObject>().transform.localScale = new Vector3(0.04f,0.04f,0.04f);
-				_downloader.WrapperGameObject.GetComponentInChildren<GameObject>().transform.rotation = Quaternion.Euler(new Vector3(0,0,180));
+//				_downloader.WrapperGameObject.GetComponentInChildren<GameObject>().transform.localScale = new Vector3(0.04f,0.04f,0.04f);
+//				_downloader.WrapperGameObject.GetComponentInChildren<GameObject>().transform.rotation = Quaternion.Euler(new Vector3(0,0,180));
 			}
 			else {
 				MissingModel.SetActive(true);
