@@ -16,7 +16,7 @@ namespace Controllers {
         }
 
         //loads data from a json string and serializes it into the members array
-        public string GetStaff () {
+        public string UpdateStaff () {
             WWW webRequest = new WWW(SettingsLoader.Instance.Setting.staff_url);
             while (!webRequest.isDone) {
                 //infinate loop to make sure it is fully downloaded before proceeding.
@@ -42,6 +42,10 @@ namespace Controllers {
 
         public bool CheckForUpdates () {
             return false;
+        }
+
+        public Staff GetStaff(int index) {
+            return Members.Find(staff => staff._index == index);
         }
 	    
     }

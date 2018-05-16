@@ -432,6 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 572498003}
   StaffPanel: {fileID: 758365178}
+  FaceWidth: 2.553752
 --- !u!4 &721875884
 Transform:
   m_ObjectHideFlags: 0

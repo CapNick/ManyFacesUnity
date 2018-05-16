@@ -6,8 +6,8 @@ namespace Controllers {
         public Camera MainCamera;
         public GameObject StaffPanel;
         
-        private const float FaceWidth = 2.553752f;
-        private const float FaceHeight = 3.537174f;
+        public float FaceWidth = 2.553752f;
+
 
         public void Start() {
 
@@ -41,11 +41,11 @@ namespace Controllers {
             //TODO: This wil need some better configuring in the future
             if (face.Location.x < 8) {
 //                face.transform.position + face.GetComponent<Collider>().bounds.size.x / 2 + ;
-                StaffPanel.transform.position =  new Vector3(face.transform.position.x + FaceWidth/2, face.transform.position.y + FaceHeight/2, -2f);
+                StaffPanel.transform.position =  new Vector3(face.transform.position.x + FaceWidth + (FaceWidth / 2), face.transform.position.y, -2f);
 
             }
             else {
-                StaffPanel.transform.position = new Vector3(face.transform.position.x - FaceWidth * 2.5f, face.transform.position.y + FaceHeight / 2, - 2f);
+                StaffPanel.transform.position = new Vector3(face.transform.position.x - FaceWidth - (FaceWidth / 2) , face.transform.position.y, -2f);
             }
         }
     }

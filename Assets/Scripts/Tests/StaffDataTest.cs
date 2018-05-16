@@ -9,7 +9,7 @@ namespace Tests {
 		[SetUp]
 		public void Init() {
 			_data = new StaffData();
-			_data.GetStaff();
+			_data.UpdateStaff();
 		}
 		
 		[Test]

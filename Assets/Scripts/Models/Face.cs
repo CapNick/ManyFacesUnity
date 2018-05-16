@@ -17,11 +17,9 @@ namespace Models {
 		public GameObject FaceModel;
 		public GameObject MissingModel;
 
-//		[Header("Loading Effects")]
-//		public GameObject EffectPrefab;
-		[SerializeField]
-		private bool _loaded;
-
+		[Header("Update")] 
+		private bool _update;
+		
 		[Header("Labels")]
 	    public TextMeshPro Name;
 	    public TextMeshPro Label;
@@ -33,30 +31,27 @@ namespace Models {
 
 		[Header("Faces Bounds")] 
 		public GameObject Painting;
-			
+
+		public void Start () {
+			Debug.Log(GetComponent<Collider>().bounds);
+		}
+		
 		// Use this for initialization
-		public void Setup (Staff staff, Vector2 location) {
+		public void Setup (Staff staff) {
 			_downloader = GetComponent<AssetDownloader>();
 			Staff = staff;
-			Location = location;
+//			Location = location;
 			_downloader.WrapperGameObject = gameObject;
 			LoadFaceModel();
-
-
 			SetLabels();
 		}
 
-		void Update() {
-			if (_downloader.IsDone && !_loaded) {
-				_loaded = true;
-//				GameObject go = Instantiate(EffectPrefab, transform.position, Quaternion.identity);
-//				Destroy(go, 1f);
-			}
+		public void Update() {
+			
 		}
 
 		public void UpdateLookingPosition(Vector3 lookingPos) {
 			_lookingPos = lookingPos;
-			
 		}
 
 	    public void OnDrawGizmos() {
