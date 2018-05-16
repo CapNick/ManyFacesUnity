@@ -80,13 +80,8 @@ namespace Controllers {
 //					
 //                }
 //            }
-            
-//            GameObject faceGameObject = Instantiate(FacePrefab);
-//            faceGameObject.name = "Face: " +  + "," + y + " ID: " + faceCounter;
-//            //set the staff list reference
-//            Face face = faceGameObject.GetComponent<Face>();
-//            face.Setup(_staffData.Members[faceCounter], new Vector2(,));
-            int faceCounter = _staffData.Members.Count;
+
+            int faceCounter = Mathf.FloorToInt(ScreenWidth * ScreenHeight);
             for (int i = 0; i < faceCounter; i++) {
                 Staff staff = _staffData.GetStaff(i);
                 if (staff != null) {
@@ -94,17 +89,17 @@ namespace Controllers {
                     faceGameObject.name = "Face: " + i;
                     Faces.Add(faceGameObject);
                     
-                    Debug.Log(FacePrefab.GetComponent<BoxCollider>().bounds.size.x);
-                    Debug.Log(FacePrefab.GetComponent<BoxCollider>().bounds.size.y);
-                    Debug.Log(FacePrefab.GetComponent<BoxCollider>().bounds.size.z);
+//                    Debug.Log(FacePrefab.GetComponent<BoxCollider>().bounds.size.x);
+//                    Debug.Log(FacePrefab.GetComponent<BoxCollider>().bounds.size.y);
+//                    Debug.Log(FacePrefab.GetComponent<BoxCollider>().bounds.size.z);
                     //set the staff list reference
                     Face face = faceGameObject.GetComponent<Face>();
                     face.Setup(staff);
                 }
-                else {
-                    // if a blank is found, just add another to the counter.
-                    faceCounter++;
-                }
+//                else {
+//                    // if a blank is found, just add another to the counter.
+//                    faceCounter++;
+//                }
             }
             
         }

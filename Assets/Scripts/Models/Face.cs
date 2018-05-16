@@ -27,10 +27,13 @@ namespace Models {
 		
 		private AssetDownloader _downloader;
 		private Color _previousColor;
+		
+		[Header("Looking system")] 
+		[SerializeField]
 		private Vector3 _lookingPos;
-
-		[Header("Faces Bounds")] 
-		public GameObject Painting;
+		[SerializeField]
+		private float _lookingSpeed;
+		public GameObject FaceContainer;
 
 		public void Start () {
 			Debug.Log(GetComponent<Collider>().bounds);
@@ -41,13 +44,13 @@ namespace Models {
 			_downloader = GetComponent<AssetDownloader>();
 			Staff = staff;
 //			Location = location;
-			_downloader.WrapperGameObject = gameObject;
 			LoadFaceModel();
 			SetLabels();
 		}
 
 		public void Update() {
-			
+			var targetRotation = Quaternion.LookRotation(_lookingPos - FaceContainer.transform.position);
+			FaceContainer.transform.rotation = Quaternion.Slerp(FaceContainer.transform.rotation, targetRotation, _lookingSpeed * Time.deltaTime);
 		}
 
 		public void UpdateLookingPosition(Vector3 lookingPos) {
@@ -79,6 +82,12 @@ namespace Models {
 			string fileLocation = Staff.model_file["url"];
 			if (fileLocation != null) {
 				_downloader.AssetURI = SettingsLoader.Instance.Setting.base_url + fileLocation;
+				while (!_downloader.IsDone) {
+					// run loop till it is done
+					
+				}
+				_downloader.WrapperGameObject.GetComponentInChildren<GameObject>().transform.localScale = new Vector3(0.04f,0.04f,0.04f);
+				_downloader.WrapperGameObject.GetComponentInChildren<GameObject>().transform.rotation = Quaternion.Euler(new Vector3(0,0,180));
 			}
 			else {
 				MissingModel.SetActive(true);
