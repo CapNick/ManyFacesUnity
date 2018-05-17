@@ -687,6 +687,7 @@ MonoBehaviour:
   Label: {fileID: 114359467603023946}
   NamePanel: {fileID: 1023506398082204}
   LabelPanel: {fileID: 1650439766147310}
+  _downloader: {fileID: 114980793141382584}
   _lookingPos: {x: 0, y: 0, z: 0}
   _lookingSpeed: 0
   FaceContainer: {fileID: 1780320081662250}
@@ -928,7 +929,7 @@ MonoBehaviour:
   AssetURI: 
   AssetExtension: .fbx
   WrapperGameObject: {fileID: 1780320081662250}
-  ShowProgress: 0
+  ShowProgress: 1
 --- !u!222 &222762777418030438
 CanvasRenderer:
   m_ObjectHideFlags: 1
