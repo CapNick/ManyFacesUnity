@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414744, b: 0.12107873, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -299,10 +299,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FacePrefab: {fileID: 1301905838405760, guid: f47d11805ec8649e289fe2554062e22e, type: 2}
   Faces: []
-  ScreenWidth: 0
-  ScreenHeight: 0
-  FacesPerLine: 10
-  FacesLines: 4
+  ScreenWidth: 28
+  ScreenHeight: 16
+  FacesPerLine: 14
+  FacesLines: 6
 --- !u!1 &572498000
 GameObject:
   m_ObjectHideFlags: 0

@@ -83,6 +83,7 @@ namespace Models {
 		private void LoadFaceModel() {
 			string fileLocation = Staff.model_file["url"];
 			if (fileLocation != null) {
+				Debug.Log(SettingsLoader.Instance.Setting.base_url + fileLocation);
 				_downloader.AssetURI = SettingsLoader.Instance.Setting.base_url + fileLocation;
 				while (!_downloader.IsDone) {
 					// run loop till it is done
@@ -105,6 +106,7 @@ namespace Models {
 				MissingModel.SetActive(true);
 			}
 		}
-
+		
+		
     }
 }
