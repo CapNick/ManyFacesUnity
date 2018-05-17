@@ -39,20 +39,19 @@ namespace Models {
 
 		public void Start () {
 			Debug.Log(GetComponent<Collider>().bounds);
+			_downloader = GetComponent<AssetDownloader>();
+
 		}
 		
 		// Use this for initialization
-		public void Setup (Staff staff) {
-			_downloader = GetComponent<AssetDownloader>();
-			Staff = staff;
-//			Location = location;
-			LoadFaceModel();
+		public void SetUp() {
 			SetLabels();
+			LoadFaceModel();
 		}
 
 		public void Update() {
-			var targetRotation = Quaternion.LookRotation(_lookingPos - FaceContainer.transform.position);
-			FaceContainer.transform.rotation = Quaternion.Slerp(FaceContainer.transform.rotation, targetRotation, _lookingSpeed * Time.deltaTime);
+//			var targetRotation = Quaternion.LookRotation(_lookingPos - FaceContainer.transform.position);
+//			FaceContainer.transform.rotation = Quaternion.Slerp(FaceContainer.transform.rotation, targetRotation, _lookingSpeed * Time.deltaTime);
 		}
 
 		public void UpdateLookingPosition(Vector3 lookingPos) {
