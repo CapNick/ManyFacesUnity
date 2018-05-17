@@ -47,9 +47,6 @@ namespace Models {
 		}
 
         public void Update() {
-
-
-
             if (_loaded) {
                 //Apply setttings
                 _loaded = false;
@@ -63,8 +60,9 @@ namespace Models {
                     texture.material = FaceTexture;
                 }
             }
-			var targetRotation = Quaternion.LookRotation(_lookingPos - FaceContainer.transform.position);
-			FaceContainer.transform.rotation = Quaternion.Slerp(FaceContainer.transform.rotation, targetRotation, _lookingSpeed * Time.deltaTime);
+//			var targetRotation = Quaternion.LookRotation(_lookingPos - FaceContainer.transform.position);
+//            Debug.Log(targetRotation);
+//			FaceContainer.transform.rotation = Quaternion.Slerp(FaceContainer.transform.rotation, targetRotation, _lookingSpeed * Time.deltaTime);
 		}
 
 		public void UpdateLookingPosition(Vector3 lookingPos) {

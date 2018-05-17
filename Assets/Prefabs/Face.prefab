@@ -683,6 +683,7 @@ MonoBehaviour:
   FaceModel: {fileID: 0}
   MissingModel: {fileID: 1732294947313538}
   FaceTexture: {fileID: 2100000, guid: 368112a737ad05148980d426ae1cb4ee, type: 2}
+  _loaded: 0
   Name: {fileID: 114633114745862142}
   Label: {fileID: 114359467603023946}
   NamePanel: {fileID: 1023506398082204}
