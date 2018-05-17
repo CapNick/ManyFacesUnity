@@ -8,8 +8,6 @@ using UnityEngine;
 namespace Controllers { 
     public class StaffData {
         public List<Staff> Members { get; private set; }
-        private string _dataAsJson;
-        
 
         public StaffData() {
             Members = new List<Staff>();
@@ -17,17 +15,13 @@ namespace Controllers {
 
         //loads data from a json string and serializes it into the members array
         public string UpdateStaff () {
-            WWW webRequest = new WWW(SettingsLoader.Instance.Setting.staff_url);
-            while (!webRequest.isDone) {
-                //infinate loop to make sure it is fully downloaded before proceeding.
-            }
-            string json = webRequest.text;
-            if (json != "") {
-                Members = JsonConvert.DeserializeObject<List<Staff>>(json);
+            List<Staff> members = GetStaff();
+
+            if (members.Count > 0) {
+                Members = members;
                 OrderStaff();
                 return "StaffData ==> Staff Data Loaded Sucessfully";
             }
-
             return "StaffData ==> There was an issue with loading the staff data";
         }
         
@@ -35,16 +29,27 @@ namespace Controllers {
             Members = Members.OrderBy(s => s._index).ToList();
         }
 
-        //checks data currently in the array to see if the members of staff have been updated
-        public void UpdateData () {
-            //TODO
+        private List<Staff> GetStaff() {
+            List<Staff> tempList = new List<Staff>();
+            WWW webRequest = new WWW(SettingsLoader.Instance.Setting.staff_url);
+            while (!webRequest.isDone) {
+                //infinate loop to make sure it is fully downloaded before proceeding.
+            }
+            string json = webRequest.text;
+            
+            if (json != "") {
+                tempList = JsonConvert.DeserializeObject<List<Staff>>(json);
+            }
+
+            return tempList;
         }
 
         public bool CheckForUpdates () {
+            
             return false;
         }
 
-        public Staff GetStaff(int index) {
+        public Staff GetStaffMember(int index) {
             return Members.Find(staff => staff._index == index);
         }
 	    

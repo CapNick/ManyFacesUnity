@@ -16,6 +16,7 @@ namespace Models {
 		[Header("Face")]
 		public GameObject FaceModel;
 		public GameObject MissingModel;
+		public Material FaceTexture;
 
 		[Header("Update")] 
 		private bool _update;
@@ -23,6 +24,7 @@ namespace Models {
 		[Header("Labels")]
 	    public TextMeshPro Name;
 	    public TextMeshPro Label;
+		public GameObject NamePanel;
 		public GameObject LabelPanel;
 		
 		private AssetDownloader _downloader;
@@ -62,6 +64,7 @@ namespace Models {
 	    }
 
 		private void SetLabels() {
+			NamePanel.SetActive(true);
 			if (string.IsNullOrEmpty(Staff.ovr_name)) {
 				Name.text = Staff.name;
 			}
@@ -86,6 +89,16 @@ namespace Models {
 					// run loop till it is done
 					
 				}
+
+				// we get the childeren and set the texture to the presaved one to make use of the vertex colors
+				int childCount = FaceContainer.transform.GetChild(0).childCount;
+				if (childCount > 0) {
+					for (int i = 0; i < childCount; i++) {
+						FaceContainer.transform.GetChild(0).GetChild(i).GetComponent<Renderer>().material = FaceTexture;
+					}
+				}
+				
+				
 //				_downloader.WrapperGameObject.GetComponentInChildren<GameObject>().transform.localScale = new Vector3(0.04f,0.04f,0.04f);
 //				_downloader.WrapperGameObject.GetComponentInChildren<GameObject>().transform.rotation = Quaternion.Euler(new Vector3(0,0,180));
 			}

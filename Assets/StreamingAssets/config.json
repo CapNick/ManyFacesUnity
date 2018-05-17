@@ -1,5 +1,5 @@
 {
-	"staff_url":"http://10.154.169.211:3000/faces/collection.json",
-	"layout_url":"http://10.154.169.211:3000/layouts.json",
-	"base_url":"http://10.154.169.211:3000"
+	"staff_url":"http://192.168.2.105:3000/faces/collection.json",
+	"layout_url":"http://192.168.2.105:3000/layouts.json",
+	"base_url":"http://192.168.2.105:3000"
 }

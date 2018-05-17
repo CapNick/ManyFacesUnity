@@ -11,7 +11,8 @@ namespace Controllers {
 		public List<GameObject> Faces;
 		
 	    public GameObject Pane;
-		
+
+		public bool UsingCamera = false;
 
 		private LiveCameraFeed _cameraFeed;
 
@@ -24,14 +25,17 @@ namespace Controllers {
 
         public void Awake() {
 //			#if (LINUX || Windows)
-			_cameraFeed = new LiveCameraFeed();
+	        if (UsingCamera) {
+		        _cameraFeed = new LiveCameraFeed();
+	        }
+
 //			#endif
 			lastFacePos = new List<Vector3>();
 		}
 
 		// Use this for initialization
 		void Start () {
-			Faces = GetComponent<FaceLoader>().Faces;
+//			Faces = GetComponent<FaceLoader>().Faces;
 			lastFacePos.Add (new Vector3 ());
 			lastFacePos.Add (new Vector3 ());
 			lastFacePos.Add (new Vector3 ());
@@ -40,9 +44,9 @@ namespace Controllers {
 	
 		// Update is called once per frame
 		void Update () {
-
-//            GetImage();
-
+			if (UsingCamera) {
+				GetImage();
+			}
 
 			if (_cameraFeed != null) {
 				//update faces looking ps
