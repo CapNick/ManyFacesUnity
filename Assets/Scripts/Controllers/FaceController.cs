@@ -20,8 +20,9 @@ namespace Controllers {
 	    Vector3 lastFacePos;
 	    private float speed = 0.5f;
 		private int numFaces = 0;
-		int xOffSet = -70;
-		int yOffSet = 70;
+		public int xOffSet = -50;
+		public int yOffSet = 50;
+	    public int zOffSet = 50;
 
         public void Awake() {
 //			#if (LINUX || Windows)
@@ -35,7 +36,7 @@ namespace Controllers {
 		// Use this for initialization
 		void Start () {
 			Faces = GetComponent<FaceLoader>().Faces;
-			lastFacePos = new Vector3 (0.0f, -7f, -20.0f);
+			lastFacePos = new Vector3 (0.0f, -7f, zOffSet);
 
 		    if (UsingCamera) {
 		        InvokeRepeating("GetImage",0, 0.2f);
