@@ -76,7 +76,7 @@ namespace Controllers {
 				        face.Staff = staff;
 				        face.SetUp();
 //				        faceGameObject.transform.position = new Vector3(x + x*FaceWidth+FaceWidth,-(y + y*FaceHeight+FaceHeight));
-				        face.transform.position = new Vector3(FaceWidth * 2.2f * x, FaceHeight * 2.1f * y);
+				        face.transform.position = new Vector3(FaceWidth * 2.2f * x, FaceHeight * 2.1f * -y);
 //				        face.transform.position = new Vector3(FacesPerLine / 2f - x, FacesLines / 2f - y);
 				        Faces.Add(faceGameObject);
 			        }
@@ -92,7 +92,7 @@ namespace Controllers {
 
             for (int y = 0; y < FacesLines; y++) {
                 for (int x = 0; x < FacesPerLine; x++) {
-                    Gizmos.DrawCube(new Vector3(FaceWidth*2.2f*x,FaceHeight*2.1f*y ), new Vector3(FaceWidth*2,FaceHeight*2,1f));
+                    Gizmos.DrawCube(new Vector3(FaceWidth*2.2f*x,FaceHeight*2.1f*-y ), new Vector3(FaceWidth*2,FaceHeight*2,1f));
                 }
             }
         }

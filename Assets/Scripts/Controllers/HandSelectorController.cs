@@ -7,10 +7,13 @@ namespace Controllers {
         public GameObject StaffPanel;
         
         public float FaceWidth = 2.553752f;
+        public float FaceHeight = 2.553752f;
 
+        private LayoutLoader layout;
 
         public void Start() {
-
+            layout = new LayoutLoader();
+            layout.Getlayout();
         }
         
         public void Update() {
@@ -39,13 +42,13 @@ namespace Controllers {
 
         private void MoveStaffPanel(Face face) {
             //TODO: This wil need some better configuring in the future
-            if (face.Location.x < 8) {
+            if (face.Location.x < layout.BoardLayout.width-2) {
 //                face.transform.position + face.GetComponent<Collider>().bounds.size.x / 2 + ;
-                StaffPanel.transform.position =  new Vector3(face.transform.position.x + FaceWidth + (FaceWidth / 2), face.transform.position.y, -2f);
+                StaffPanel.transform.position =  new Vector3(face.transform.position.x + (FaceWidth / 2), face.transform.position.y+FaceHeight, -2f);
 
             }
             else {
-                StaffPanel.transform.position = new Vector3(face.transform.position.x - FaceWidth - (FaceWidth / 2) , face.transform.position.y, -2f);
+                StaffPanel.transform.position = new Vector3(face.transform.position.x - (FaceWidth * FaceWidth) - (FaceWidth / 3) , face.transform.position.y+FaceHeight, -2f);
             }
         }
     }

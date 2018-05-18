@@ -49,16 +49,18 @@ namespace Models {
         public void Update() {
             if (_loaded) {
                 //Apply setttings
-                _loaded = false;
-                FaceContainer.transform.GetChild(0).localPosition = Vector3.zero;
-                Transform model = FaceContainer.transform.GetChild(0).GetChild(0).transform;
-                model.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                model.transform.localRotation = Quaternion.Euler(0 , 180, 180);
-                //apply textures
-                for (int i = 0; i < model.childCount; i++) {
-                    var texture = model.GetChild(i).gameObject.GetComponent<MeshRenderer>();
-                    texture.material = FaceTexture;
-                }
+	            if (_downloader.IsDone) {
+		            _loaded = false;
+		            FaceContainer.transform.GetChild(0).localPosition = Vector3.zero;
+		            Transform model = FaceContainer.transform.GetChild(0).GetChild(0).transform;
+		            model.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+		            model.transform.localRotation = Quaternion.Euler(0 , 180, 180);
+		            //apply textures
+		            for (int i = 0; i < model.childCount; i++) {
+			            var texture = model.GetChild(i).gameObject.GetComponent<MeshRenderer>();
+			            texture.material = FaceTexture;
+		            }
+	            }
             }
 //			var targetRotation = Quaternion.LookRotation(_lookingPos - FaceContainer.transform.position);
 //            Debug.Log(targetRotation);
@@ -94,6 +96,7 @@ namespace Models {
 	    private void LoadFaceModel() {
 	        string fileLocation = Staff.model_file["url"];
 	        if (fileLocation != null) {
+		        _loaded = true;
 	            _downloader.AssetURI = SettingsLoader.Instance.Setting.base_url + fileLocation;
 	        }
 	        else {
